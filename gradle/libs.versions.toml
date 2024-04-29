@@ -1,0 +1,49 @@
+[versions]
+agp = "8.3.2"
+java = "1.8"
+kotlin = "1.9.23"
+kotlin-coroutines = "1.8.0"
+androidx-annotation = "1.7.1"
+androidx-annotation-experimental = "1.4.1"
+androidx-core = "1.13.0"
+androidx-collection = "1.4.0"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-jdk7 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidx-annotation" }
+androidx-annotation-experimental = { group = "androidx.annotation", name = "annotation-experimental", version.ref = "androidx-annotation-experimental" }
+androidx-core = { group = "androidx.core", name = "core", version.ref = "androidx-core" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
+androidx-collection = { group = "androidx.collection", name = "collection", version.ref = "androidx-collection" }
+androidx-collection-ktx = { group = "androidx.collection", name = "collection-ktx", version.ref = "androidx-collection" }
+
+[bundles]
+kotlin = [
+    "kotlin-stdlib",
+    "kotlin-stdlib-jdk7",
+    "kotlin-stdlib-jdk8",
+    "kotlin-reflect",
+    "kotlin-coroutines-core",
+    "kotlin-coroutines-android"
+]
+androidx-annotation = [
+    "androidx-annotation",
+    "androidx-annotation-experimental"
+]
+androidx-core = [
+    "androidx-core",
+    "androidx-core-ktx"
+]
+androidx-collection = [
+    "androidx-collection",
+    "androidx-collection-ktx"
+]
