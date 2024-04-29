@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.yuriybudiyev.utils.collection
+package com.github.yuriybudiyev.utils.collections
 
 
 /**
