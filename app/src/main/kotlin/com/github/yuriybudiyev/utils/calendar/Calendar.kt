@@ -24,6 +24,7 @@
 
 package com.github.yuriybudiyev.utils.calendar
 
+import com.github.yuriybudiyev.utils.calendar.components.DayPeriod
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -691,6 +692,41 @@ var Calendar.hourOfDay: Int
     get() = get(Calendar.HOUR_OF_DAY)
     set(value) = set(
         Calendar.HOUR_OF_DAY,
+        value
+    )
+
+var Calendar.periodOfDay: DayPeriod
+    get() = when (get(Calendar.AM_PM)) {
+        Calendar.AM -> DayPeriod.AM
+        Calendar.PM -> DayPeriod.PM
+        else -> throw IllegalStateException("Invalid calendar value")
+    }
+    set(value) {
+        when (value) {
+            DayPeriod.AM -> {
+                set(
+                    Calendar.AM_PM,
+                    Calendar.AM
+                )
+            }
+            DayPeriod.PM -> {
+                set(
+                    Calendar.AM_PM,
+                    Calendar.PM
+                )
+            }
+        }
+    }
+
+/**
+ * Hour of day (12 hours)
+ *
+ * @see Calendar.HOUR
+ */
+var Calendar.hourOfPeriodOfDay: Int
+    get() = get(Calendar.HOUR)
+    set(value) = set(
+        Calendar.HOUR,
         value
     )
 
