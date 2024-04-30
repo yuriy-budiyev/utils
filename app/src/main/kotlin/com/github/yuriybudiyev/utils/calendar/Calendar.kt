@@ -66,7 +66,7 @@ fun createCalendar(timeInMillis: Long): Calendar {
 fun createCalendar(
     year: Int,
     month: Int,
-    dayOfMonth: Int
+    dayOfMonth: Int,
 ): Calendar {
     val calendar = createCalendar()
     calendar.year = year

@@ -24,13 +24,12 @@
 
 package com.github.yuriybudiyev.utils.collections
 
-
 /**
  * Swaps the elements at the [first] and [second] positions in [this] list.
  */
 fun <E> MutableList<E>.swap(
     first: Int,
-    second: Int
+    second: Int,
 ) {
     set(
         first,
@@ -117,7 +116,7 @@ fun <K, V> hashMap(expectedSize: Int): HashMap<K, V> =
  */
 fun <K, V> linkedHashMap(
     expectedSize: Int,
-    accessOrder: Boolean = false
+    accessOrder: Boolean = false,
 ): LinkedHashMap<K, V> =
     LinkedHashMap(
         mapCapacityForExpectedSize(expectedSize),
@@ -184,9 +183,9 @@ inline fun <K, V> Iterable<V>.associateByNotNull(keySelector: (V) -> K?): Map<K,
  *
  * Null keys are skipped.
  */
-inline fun <K, V, D : MutableMap<K, V>> Iterable<V>.associateByNotNullTo(
+inline fun <K, V, D: MutableMap<K, V>> Iterable<V>.associateByNotNullTo(
     destination: D,
-    keySelector: (V) -> K?
+    keySelector: (V) -> K?,
 ): D =
     associateByNotNullTo(
         destination,
@@ -206,7 +205,7 @@ inline fun <K, V, D : MutableMap<K, V>> Iterable<V>.associateByNotNullTo(
  */
 inline fun <K, V, R> Iterable<V>.associateByNotNull(
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): Map<K, R> =
     associateByNotNullTo(
         LinkedHashMap(),
@@ -223,10 +222,10 @@ inline fun <K, V, R> Iterable<V>.associateByNotNull(
  *
  * Null keys and values are skipped.
  */
-inline fun <K, V, R, D : MutableMap<K, R>> Iterable<V>.associateByNotNullTo(
+inline fun <K, V, R, D: MutableMap<K, R>> Iterable<V>.associateByNotNullTo(
     destination: D,
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): D {
     for (value in this) {
         val key = keySelector(value)
@@ -267,7 +266,7 @@ inline fun <K, V> Sequence<V>.associateByNotNull(keySelector: (V) -> K?): Map<K,
  */
 inline fun <K, V, R> Sequence<V>.associateByNotNull(
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): Map<K, R> =
     associateByNotNullTo(
         LinkedHashMap(),
@@ -284,10 +283,10 @@ inline fun <K, V, R> Sequence<V>.associateByNotNull(
  *
  * Null keys and values are skipped.
  */
-inline fun <K, V, R, D : MutableMap<K, R>> Sequence<V>.associateByNotNullTo(
+inline fun <K, V, R, D: MutableMap<K, R>> Sequence<V>.associateByNotNullTo(
     destination: D,
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): D {
     for (value in this) {
         val key = keySelector(value)
@@ -320,9 +319,9 @@ inline fun <K, V> Iterable<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, Lis
  *
  * Null keys are skipped.
  */
-inline fun <K, V, D : MutableMap<K, MutableList<V>>> Iterable<V>.groupByNotNullTo(
+inline fun <K, V, D: MutableMap<K, MutableList<V>>> Iterable<V>.groupByNotNullTo(
     destination: D,
-    keySelector: (V) -> K?
+    keySelector: (V) -> K?,
 ): D =
     groupByNotNullTo(
         destination,
@@ -340,7 +339,7 @@ inline fun <K, V, D : MutableMap<K, MutableList<V>>> Iterable<V>.groupByNotNullT
  */
 inline fun <K, V, R> Iterable<V>.groupByNotNull(
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): Map<K, List<R>> =
     groupByNotNullTo(
         LinkedHashMap(),
@@ -355,10 +354,10 @@ inline fun <K, V, R> Iterable<V>.groupByNotNull(
  *
  * Null keys and values are skipped.
  */
-inline fun <K, V, R, D : MutableMap<K, MutableList<R>>> Iterable<V>.groupByNotNullTo(
+inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Iterable<V>.groupByNotNullTo(
     destination: D,
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): D {
     for (value in this) {
         val key = keySelector(value)
@@ -391,9 +390,9 @@ inline fun <K, V> Sequence<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, Lis
  *
  * Null keys are skipped.
  */
-inline fun <K, V, D : MutableMap<K, MutableList<V>>> Sequence<V>.groupByNotNullTo(
+inline fun <K, V, D: MutableMap<K, MutableList<V>>> Sequence<V>.groupByNotNullTo(
     destination: D,
-    keySelector: (V) -> K?
+    keySelector: (V) -> K?,
 ): D =
     groupByNotNullTo(
         destination,
@@ -411,7 +410,7 @@ inline fun <K, V, D : MutableMap<K, MutableList<V>>> Sequence<V>.groupByNotNullT
  */
 inline fun <K, V, R> Sequence<V>.groupByNotNull(
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): Map<K, List<R>> =
     groupByNotNullTo(
         LinkedHashMap(),
@@ -426,10 +425,10 @@ inline fun <K, V, R> Sequence<V>.groupByNotNull(
  *
  * Null keys and values are skipped.
  */
-inline fun <K, V, R, D : MutableMap<K, MutableList<R>>> Sequence<V>.groupByNotNullTo(
+inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Sequence<V>.groupByNotNullTo(
     destination: D,
     keySelector: (V) -> K?,
-    valueTransform: (V) -> R?
+    valueTransform: (V) -> R?,
 ): D {
     for (value in this) {
         val key = keySelector(value)
@@ -473,9 +472,9 @@ inline fun <E, V> Sequence<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
  *
  * Null values are skipped.
  */
-inline fun <E, V, D : MutableCollection<V>> Iterable<E>.toCollectionNotNull(
+inline fun <E, V, D: MutableCollection<V>> Iterable<E>.toCollectionNotNull(
     destination: D,
-    valueTransform: (E) -> V?
+    valueTransform: (E) -> V?,
 ): D {
     for (value in this) {
         val transformed = valueTransform(value)
@@ -492,9 +491,9 @@ inline fun <E, V, D : MutableCollection<V>> Iterable<E>.toCollectionNotNull(
  *
  * Null values are skipped.
  */
-inline fun <E, V, D : MutableCollection<V>> Sequence<E>.toCollectionNotNull(
+inline fun <E, V, D: MutableCollection<V>> Sequence<E>.toCollectionNotNull(
     destination: D,
-    valueTransform: (E) -> V?
+    valueTransform: (E) -> V?,
 ): D {
     for (value in this) {
         val transformed = valueTransform(value)
@@ -514,7 +513,7 @@ inline fun <E, V, D : MutableCollection<V>> Sequence<E>.toCollectionNotNull(
  */
 inline fun <E> Array<E>.joinToStringNotNull(
     separator: String = ", ",
-    valueTransform: (E) -> String? = { it?.toString() }
+    valueTransform: (E) -> String? = { it?.toString() },
 ): String {
     val builder = StringBuilder()
     var prevExists = false
@@ -542,7 +541,7 @@ inline fun <E> Array<E>.joinToStringNotNull(
  */
 inline fun <E> Iterable<E>.joinToStringNotNull(
     separator: String = ", ",
-    valueTransform: (E) -> String? = { it?.toString() }
+    valueTransform: (E) -> String? = { it?.toString() },
 ): String {
     val builder = StringBuilder()
     var prevExists = false
@@ -570,7 +569,7 @@ inline fun <E> Iterable<E>.joinToStringNotNull(
  */
 inline fun <E> Sequence<E>.joinToStringNotNull(
     separator: String = ", ",
-    valueTransform: (E) -> String? = { it?.toString() }
+    valueTransform: (E) -> String? = { it?.toString() },
 ): String {
     val builder = StringBuilder()
     var prevExists = false
