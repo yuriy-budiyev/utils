@@ -26,10 +26,13 @@ package com.github.yuriybudiyev.utils.multithreading
 
 import com.github.yuriybudiyev.utils.multithreading.executor.WorkerThreadExecutor
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.ScheduledExecutorService
 
 const val DefaultThreadPoolSize = 4
+
+val Dispatchers.WORKER by lazy { createCoroutineDispatcher() }
 
 fun createWorkerThreadExecutor(): ScheduledExecutorService =
     WorkerThreadExecutor(
