@@ -32,9 +32,9 @@ import java.util.concurrent.ScheduledExecutorService
 
 const val DefaultThreadPoolSize = 4
 
-val Dispatchers.Worker: CoroutineDispatcher by lazy { createCoroutineDispatcher() }
+val Dispatchers.Worker: CoroutineDispatcher by lazy { createWorkerCoroutineDispatcher() }
 
-fun createCoroutineDispatcher(corePoolSize: Int = DefaultThreadPoolSize): CoroutineDispatcher =
+fun createWorkerCoroutineDispatcher(corePoolSize: Int = DefaultThreadPoolSize): CoroutineDispatcher =
     createWorkerThreadExecutor(corePoolSize).asCoroutineDispatcher()
 
 fun createWorkerThreadExecutor(corePoolSize: Int = DefaultThreadPoolSize): ScheduledExecutorService =
