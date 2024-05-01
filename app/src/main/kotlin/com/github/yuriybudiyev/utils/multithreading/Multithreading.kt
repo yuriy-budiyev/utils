@@ -34,13 +34,13 @@ const val DefaultThreadPoolSize = 4
 
 val Dispatchers.Worker: CoroutineDispatcher by lazy { createCoroutineDispatcher() }
 
-fun createCoroutineDispatcher(): CoroutineDispatcher =
-    createWorkerThreadExecutor().asCoroutineDispatcher()
+fun createCoroutineDispatcher(corePoolSize: Int = DefaultThreadPoolSize): CoroutineDispatcher =
+    createWorkerThreadExecutor(corePoolSize).asCoroutineDispatcher()
 
-fun createWorkerThreadExecutor(): ScheduledExecutorService =
+fun createWorkerThreadExecutor(corePoolSize: Int = DefaultThreadPoolSize): ScheduledExecutorService =
     WorkerThreadExecutor(
         Runtime
             .getRuntime()
             .availableProcessors()
-            .coerceAtMost(DefaultThreadPoolSize)
+            .coerceAtMost(corePoolSize)
     )
