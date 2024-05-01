@@ -695,6 +695,32 @@ var Calendar.hourOfDay: Int
     )
 
 /**
+ * Hour of period of day (12 hours)
+ *
+ * @see Calendar.HOUR
+ */
+var Calendar.hour: Int
+    get() = get(Calendar.HOUR)
+    set(value) = set(
+        Calendar.HOUR,
+        value
+    )
+
+/**
+ * Whether the [hour] is before or after noon
+ *
+ * @see Calendar.AM_PM
+ * @see Calendar.AM
+ * @see Calendar.PM
+ */
+var Calendar.amPm: Int
+    get() = get(Calendar.AM_PM)
+    set(value) = set(
+        Calendar.AM_PM,
+        value
+    )
+
+/**
  * Minute
  *
  * @see Calendar.MINUTE
