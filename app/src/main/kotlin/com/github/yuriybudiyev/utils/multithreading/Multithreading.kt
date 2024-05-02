@@ -29,10 +29,12 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.ScheduledExecutorService
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
 
 const val DefaultThreadPoolSize = 4
 
-val Dispatchers.Worker: CoroutineDispatcher by lazy { createWorkerCoroutineDispatcher() }
+val Dispatchers.Worker: CoroutineDispatcher by WorkerDispatcherHolder
 
 fun createWorkerCoroutineDispatcher(): CoroutineDispatcher =
     createWorkerExecutorService().asCoroutineDispatcher()
@@ -44,3 +46,14 @@ fun createWorkerExecutorService(): ScheduledExecutorService =
             .availableProcessors()
             .coerceAtMost(DefaultThreadPoolSize)
     )
+
+private object WorkerDispatcherHolder: ReadOnlyProperty<Dispatchers, CoroutineDispatcher> {
+
+    override fun getValue(
+        thisRef: Dispatchers,
+        property: KProperty<*>,
+    ): CoroutineDispatcher =
+        dispatcher
+
+    private val dispatcher: CoroutineDispatcher = createWorkerCoroutineDispatcher()
+}
