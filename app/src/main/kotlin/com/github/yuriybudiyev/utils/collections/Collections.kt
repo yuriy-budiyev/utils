@@ -88,12 +88,12 @@ inline fun <reified E> listOfNulls(size: Int): List<E?> =
  * Returns a mutable list with [size] amount of `null` values
  */
 fun <E> mutableListOfNulls(size: Int): MutableList<E?> =
-    arrayListOnNulls(size)
+    arrayListOfNulls(size)
 
 /**
  * Returns an [ArrayList] list with [size] amount of `null` values
  */
-fun <E> arrayListOnNulls(size: Int): ArrayList<E?> {
+fun <E> arrayListOfNulls(size: Int): ArrayList<E?> {
     val list = ArrayList<E?>(size)
     repeat(size) {
         list.add(null)
@@ -104,7 +104,7 @@ fun <E> arrayListOnNulls(size: Int): ArrayList<E?> {
 /**
  * Returns a [HashMap] for a known number of elements ([expectedSize])
  */
-fun <K, V> hashMap(expectedSize: Int): HashMap<K, V> =
+fun <K, V> HashMap(expectedSize: Int): HashMap<K, V> =
     HashMap(
         mapCapacityForExpectedSize(expectedSize),
         0.75f
@@ -114,7 +114,7 @@ fun <K, V> hashMap(expectedSize: Int): HashMap<K, V> =
  * Returns a [LinkedHashMap] for a known number of elements ([expectedSize]),
  * and given [accessOrder] (ordering mode - `true` for access-order, `false` for insertion-order)
  */
-fun <K, V> linkedHashMap(
+fun <K, V> LinkedHashMap(
     expectedSize: Int,
     accessOrder: Boolean = false,
 ): LinkedHashMap<K, V> =
@@ -127,7 +127,7 @@ fun <K, V> linkedHashMap(
 /**
  * Returns a [HashSet] for a known number of elements ([expectedSize])
  */
-fun <E> hashSet(expectedSize: Int): HashSet<E> =
+fun <E> HashSet(expectedSize: Int): HashSet<E> =
     HashSet(
         mapCapacityForExpectedSize(expectedSize),
         0.75f
@@ -136,7 +136,7 @@ fun <E> hashSet(expectedSize: Int): HashSet<E> =
 /**
  * Returns a [LinkedHashSet] for a known number of elements ([expectedSize])
  */
-fun <E> linkedHashSet(expectedSize: Int): LinkedHashSet<E> =
+fun <E> LinkedHashSet(expectedSize: Int): LinkedHashSet<E> =
     LinkedHashSet(
         mapCapacityForExpectedSize(expectedSize),
         0.75f
