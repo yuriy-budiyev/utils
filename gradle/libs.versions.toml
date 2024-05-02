@@ -5,7 +5,7 @@ kotlin = "1.9.23"
 kotlin-coroutines = "1.8.0"
 androidx-annotation = "1.7.1"
 androidx-annotation-experimental = "1.4.1"
-androidx-core = "1.13.0"
+androidx-core = "1.13.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
