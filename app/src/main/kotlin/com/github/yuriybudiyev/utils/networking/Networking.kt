@@ -29,11 +29,24 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.annotation.RequiresPermission
+import com.github.yuriybudiyev.utils.networking.transport.TransportType
 
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
-fun Context.isConnectedToInternet(): Boolean {
-    val manager = getSystemService(ConnectivityManager::class.java)
+fun Context.isConnectedToInternet(transportType: TransportType = TransportType.Any): Boolean {
+    val manager = getSystemService(ConnectivityManager::class.java) ?: return false
     val network = manager.activeNetwork ?: return false
     val capabilities = manager.getNetworkCapabilities(network) ?: return false
-    return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    return when (transportType) {
+        TransportType.Any -> {
+            capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+        }
+        TransportType.Cellular -> {
+            capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+        }
+        TransportType.WiFi -> {
+            capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+        }
+    }
 }
