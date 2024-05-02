@@ -150,11 +150,9 @@ private fun mapCapacityForExpectedSize(expectedSize: Int): Int =
         expectedSize < 3 -> {
             expectedSize + 1
         }
-
         expectedSize < Int.MAX_VALUE / 2 + 1 -> {
             expectedSize + expectedSize / 3
         }
-
         else -> {
             Int.MAX_VALUE
         }
