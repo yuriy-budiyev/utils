@@ -29,8 +29,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import java.util.concurrent.CancellationException
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
+import java.util.concurrent.RejectedExecutionException
 import java.util.concurrent.ScheduledThreadPoolExecutor
 import java.util.concurrent.ThreadFactory
+import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -89,5 +91,13 @@ class WorkerThreadExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
         }
     }
 
-    private object RejectedExecutionHandler: AbortPolicy()
+    private object RejectedExecutionHandler: java.util.concurrent.RejectedExecutionHandler {
+
+        override fun rejectedExecution(
+            r: Runnable,
+            e: ThreadPoolExecutor,
+        ) {
+            throw RejectedExecutionException("Task $r rejected from $e")
+        }
+    }
 }
