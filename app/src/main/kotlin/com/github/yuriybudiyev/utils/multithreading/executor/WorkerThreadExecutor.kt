@@ -33,7 +33,7 @@ import java.util.concurrent.RejectedExecutionException
 import java.util.concurrent.ScheduledThreadPoolExecutor
 import java.util.concurrent.ThreadFactory
 import java.util.concurrent.ThreadPoolExecutor
-import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicLong
 
 /**
  * Scheduled thread pool executor with [Process.THREAD_PRIORITY_BACKGROUND] thread priority,
@@ -74,7 +74,7 @@ class WorkerThreadExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
                 "worker-${counter.getAndIncrement()}"
             )
 
-        private val counter: AtomicInteger = AtomicInteger(1)
+        private val counter: AtomicLong = AtomicLong(1)
 
         private class WorkerThread(
             target: Runnable,
