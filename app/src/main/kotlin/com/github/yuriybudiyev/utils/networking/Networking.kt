@@ -31,6 +31,10 @@ import android.net.NetworkCapabilities
 import androidx.annotation.RequiresPermission
 import com.github.yuriybudiyev.utils.networking.transport.TransportType
 
+/**
+ * Returns `true` if active network uses given [transportType]
+ * and should be able to reach the internet, `false` otherwise.
+ */
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
 fun Context.isConnectedToInternet(transportType: TransportType = TransportType.Any): Boolean {
     val manager = getSystemService(ConnectivityManager::class.java) ?: return false
