@@ -39,7 +39,7 @@ import java.util.concurrent.atomic.AtomicLong
  * Scheduled thread pool executor with [Process.THREAD_PRIORITY_BACKGROUND] thread priority,
  * can be used as [CoroutineDispatcher].
  */
-class WorkerThreadExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
+class WorkerExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
     corePoolSize,
     WorkerThreadFactory,
     RejectedExecutionHandler

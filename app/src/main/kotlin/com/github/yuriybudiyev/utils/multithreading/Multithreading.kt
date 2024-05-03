@@ -24,7 +24,7 @@
 
 package com.github.yuriybudiyev.utils.multithreading
 
-import com.github.yuriybudiyev.utils.multithreading.executor.WorkerThreadExecutor
+import com.github.yuriybudiyev.utils.multithreading.executor.WorkerExecutor
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
@@ -40,7 +40,7 @@ fun createWorkerCoroutineDispatcher(): CoroutineDispatcher =
     createWorkerExecutorService().asCoroutineDispatcher()
 
 fun createWorkerExecutorService(): ScheduledExecutorService =
-    WorkerThreadExecutor(
+    WorkerExecutor(
         Runtime
             .getRuntime()
             .availableProcessors()
