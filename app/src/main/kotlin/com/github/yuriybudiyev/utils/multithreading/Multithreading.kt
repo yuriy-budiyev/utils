@@ -24,6 +24,7 @@
 
 package com.github.yuriybudiyev.utils.multithreading
 
+import android.os.Process
 import com.github.yuriybudiyev.utils.multithreading.executor.WorkerExecutor
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -34,11 +35,23 @@ import kotlin.reflect.KProperty
 
 const val DefaultThreadPoolSize = 4
 
+/**
+ * [CoroutineDispatcher] based on scheduled thread pool executor
+ * with [Process.THREAD_PRIORITY_BACKGROUND] thread priority.
+ */
 val Dispatchers.Worker: CoroutineDispatcher by WorkerDispatcherHolder
 
+/**
+ * Create [CoroutineDispatcher] based on scheduled thread pool executor
+ * with [Process.THREAD_PRIORITY_BACKGROUND] thread priority.
+ */
 fun createWorkerCoroutineDispatcher(): CoroutineDispatcher =
     createWorkerExecutorService().asCoroutineDispatcher()
 
+/**
+ * Create scheduled thread pool executor with [Process.THREAD_PRIORITY_BACKGROUND] thread priority,
+ * can be used as [CoroutineDispatcher].
+ */
 fun createWorkerExecutorService(): ScheduledExecutorService =
     WorkerExecutor(
         Runtime
