@@ -28,7 +28,7 @@ import java.util.Collections
 import java.util.IdentityHashMap
 
 /**
- * Write this [Throwable]'s stack trace to an [Appendable] output, using given [separator]
+ * Write this [Throwable]'s stack trace to an [Appendable] output, using given [separator].
  */
 fun Throwable.writeStackTraceTo(
     output: Appendable,
