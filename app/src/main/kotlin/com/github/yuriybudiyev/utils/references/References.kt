@@ -72,7 +72,6 @@ fun <T> T.asSoftReference(queue: ReferenceQueue<T>? = null): SoftReference<T> =
  *   has been finalized, and some phantom reference refers to it.
  * - Finally, an object is unreachable, and therefore eligible for reclamation, when it is not
  *   reachable in any of the above ways.
- *
  */
 fun <T> T.asWeakReference(queue: ReferenceQueue<T>? = null): WeakReference<T> =
     WeakReference(
