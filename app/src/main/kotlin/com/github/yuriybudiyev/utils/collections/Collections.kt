@@ -147,18 +147,10 @@ fun <E> LinkedHashSet(expectedSize: Int): LinkedHashSet<E> =
  */
 private fun mapCapacityForExpectedSize(expectedSize: Int): Int =
     when {
-        expectedSize < 0 -> {
-            throw IllegalArgumentException("Expected size can't be less than zero")
-        }
-        expectedSize < 3 -> {
-            expectedSize + 1
-        }
-        expectedSize < INT_MAX_POWER_OF_TWO -> {
-            ((expectedSize / LOAD_FACTOR) + 1.0F).toInt()
-        }
-        else -> {
-            Int.MAX_VALUE
-        }
+        expectedSize < 0 -> throw IllegalArgumentException("Expected size can't be less than zero")
+        expectedSize < 3 -> expectedSize + 1
+        expectedSize < INT_MAX_POWER_OF_TWO -> ((expectedSize / LOAD_FACTOR) + 1.0F).toInt()
+        else -> Int.MAX_VALUE
     }
 
 private const val LOAD_FACTOR: Float = 0.75F
