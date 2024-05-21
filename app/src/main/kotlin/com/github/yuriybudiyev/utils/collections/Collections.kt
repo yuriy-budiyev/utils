@@ -107,7 +107,7 @@ fun <E> arrayListOfNulls(size: Int): ArrayList<E?> {
 fun <K, V> HashMap(expectedSize: Int): HashMap<K, V> =
     HashMap(
         mapCapacityForExpectedSize(expectedSize),
-        0.75f
+        LOAD_FACTOR
     )
 
 /**
@@ -120,7 +120,7 @@ fun <K, V> LinkedHashMap(
 ): LinkedHashMap<K, V> =
     LinkedHashMap(
         mapCapacityForExpectedSize(expectedSize),
-        0.75f,
+        LOAD_FACTOR,
         accessOrder
     )
 
@@ -130,7 +130,7 @@ fun <K, V> LinkedHashMap(
 fun <E> HashSet(expectedSize: Int): HashSet<E> =
     HashSet(
         mapCapacityForExpectedSize(expectedSize),
-        0.75f
+        LOAD_FACTOR
     )
 
 /**
@@ -139,7 +139,7 @@ fun <E> HashSet(expectedSize: Int): HashSet<E> =
 fun <E> LinkedHashSet(expectedSize: Int): LinkedHashSet<E> =
     LinkedHashSet(
         mapCapacityForExpectedSize(expectedSize),
-        0.75f
+        LOAD_FACTOR
     )
 
 /**
@@ -147,16 +147,22 @@ fun <E> LinkedHashSet(expectedSize: Int): LinkedHashSet<E> =
  */
 private fun mapCapacityForExpectedSize(expectedSize: Int): Int =
     when {
+        expectedSize < 0 -> {
+            throw IllegalArgumentException("Expected size can't be less than zero")
+        }
         expectedSize < 3 -> {
             expectedSize + 1
         }
-        expectedSize < Int.MAX_VALUE / 2 + 1 -> {
-            expectedSize + expectedSize / 3
+        expectedSize < INT_MAX_POWER_OF_TWO -> {
+            ((expectedSize / LOAD_FACTOR) + 1.0F).toInt()
         }
         else -> {
             Int.MAX_VALUE
         }
     }
+
+private const val LOAD_FACTOR: Float = 0.75F
+private const val INT_MAX_POWER_OF_TWO: Int = 1 shl (Int.SIZE_BITS - 2)
 
 /**
  * Returns a [Map] containing the elements from the [this] collection indexed by the key
