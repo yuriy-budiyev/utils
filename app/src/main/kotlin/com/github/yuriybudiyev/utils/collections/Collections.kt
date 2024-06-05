@@ -102,19 +102,19 @@ fun <E> arrayListOfNulls(size: Int): ArrayList<E?> {
 }
 
 /**
- * Returns a [HashMap] for a known number of elements ([expectedSize])
+ * Returns a [hashMapWithExpectedSize] for a known number of elements ([expectedSize])
  */
-fun <K, V> HashMap(expectedSize: Int): HashMap<K, V> =
+fun <K, V> hashMapWithExpectedSize(expectedSize: Int): HashMap<K, V> =
     HashMap(
         mapCapacityForExpectedSize(expectedSize),
         LOAD_FACTOR
     )
 
 /**
- * Returns a [LinkedHashMap] for a known number of elements ([expectedSize]),
+ * Returns a [linkedHashMapWithExpectedSize] for a known number of elements ([expectedSize]),
  * and given [accessOrder] (ordering mode - `true` for access-order, `false` for insertion-order)
  */
-fun <K, V> LinkedHashMap(
+fun <K, V> linkedHashMapWithExpectedSize(
     expectedSize: Int,
     accessOrder: Boolean = false,
 ): LinkedHashMap<K, V> =
@@ -125,25 +125,25 @@ fun <K, V> LinkedHashMap(
     )
 
 /**
- * Returns a [HashSet] for a known number of elements ([expectedSize])
+ * Returns a [hashSetWithExpectedSize] for a known number of elements ([expectedSize])
  */
-fun <E> HashSet(expectedSize: Int): HashSet<E> =
+fun <E> hashSetWithExpectedSize(expectedSize: Int): HashSet<E> =
     HashSet(
         mapCapacityForExpectedSize(expectedSize),
         LOAD_FACTOR
     )
 
 /**
- * Returns a [LinkedHashSet] for a known number of elements ([expectedSize])
+ * Returns a [linkedHashSetWithExpectedSize] for a known number of elements ([expectedSize])
  */
-fun <E> LinkedHashSet(expectedSize: Int): LinkedHashSet<E> =
+fun <E> linkedHashSetWithExpectedSize(expectedSize: Int): LinkedHashSet<E> =
     LinkedHashSet(
         mapCapacityForExpectedSize(expectedSize),
         LOAD_FACTOR
     )
 
 /**
- * Initial capacity for [HashMap] with 0.75f load factor and [expectedSize]
+ * Initial capacity for [hashMapWithExpectedSize] with 0.75f load factor and [expectedSize]
  */
 private fun mapCapacityForExpectedSize(expectedSize: Int): Int =
     when {
