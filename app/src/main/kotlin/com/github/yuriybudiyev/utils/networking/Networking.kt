@@ -32,7 +32,7 @@ import androidx.annotation.RequiresPermission
 import com.github.yuriybudiyev.utils.networking.transport.TransportType
 
 /**
- * Returns `true` if active network uses given [transportType]
+ * Returns `true` if active network has given [transportType]
  * and should be able to reach the internet, `false` otherwise.
  */
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
