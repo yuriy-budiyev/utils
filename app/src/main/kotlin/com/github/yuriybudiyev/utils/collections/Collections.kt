@@ -26,6 +26,8 @@ package com.github.yuriybudiyev.utils.collections
 
 /**
  * Swaps the elements at the [first] and [second] positions in [this] list.
+ *
+ * Note that this operation can take significant time if given list is not [RandomAccess].
  */
 fun <E> MutableList<E>.swap(
     first: Int,
