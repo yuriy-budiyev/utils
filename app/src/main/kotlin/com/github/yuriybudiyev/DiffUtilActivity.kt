@@ -42,6 +42,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.github.yuriybudiyev.utils.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.math.roundToInt
 
 /**
  * Simple sample
@@ -99,20 +100,8 @@ class DiffUtilActivity: Activity() {
                     Gravity.BOTTOM or Gravity.END
                 )
                 .apply {
-                    marginEnd = TypedValue
-                        .applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP,
-                            16F,
-                            displayMetrics
-                        )
-                        .toInt()
-                    bottomMargin = TypedValue
-                        .applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP,
-                            16F,
-                            displayMetrics
-                        )
-                        .toInt()
+                    marginEnd = convertDpToPx(16F)
+                    bottomMargin = convertDpToPx(16F)
                 }
         )
         changeButton.setOnClickListener {
@@ -202,36 +191,11 @@ private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        val displayMetrics = context.resources.displayMetrics
         textView.setPaddingRelative(
-            TypedValue
-                .applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    16F,
-                    displayMetrics
-                )
-                .toInt(),
-            TypedValue
-                .applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    12F,
-                    displayMetrics
-                )
-                .toInt(),
-            TypedValue
-                .applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    16F,
-                    displayMetrics
-                )
-                .toInt(),
-            TypedValue
-                .applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    12F,
-                    displayMetrics
-                )
-                .toInt(),
+            context.convertDpToPx(16F),
+            context.convertDpToPx(12F),
+            context.convertDpToPx(16F),
+            context.convertDpToPx(12F),
         )
         textView.setTypeface(
             Typeface.create(
@@ -246,6 +210,15 @@ private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
         textView.setTextColor(Color.BLACK)
     }
 }
+
+private fun Context.convertDpToPx(dp: Float): Int =
+    TypedValue
+        .applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            resources.displayMetrics
+        )
+        .roundToInt()
 
 private fun buildOldItems(): List<TextItem> =
     listOf(
