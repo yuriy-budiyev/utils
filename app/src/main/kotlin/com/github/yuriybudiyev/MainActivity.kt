@@ -53,7 +53,7 @@ class MainActivity: Activity() {
     private lateinit var contentView: RecyclerView
 }
 
-private class TextViewHolder(private val context: Context): ViewHolder(TextView(context)) {
+private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
 
     val textView: TextView = itemView as TextView
 
