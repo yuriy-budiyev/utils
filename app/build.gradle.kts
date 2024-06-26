@@ -44,4 +44,5 @@ dependencies {
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.androidx.annotation)
     implementation(libs.bundles.androidx.core)
+    implementation(libs.androidx.recyclerview)
 }
