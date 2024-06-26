@@ -43,6 +43,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.github.yuriybudiyev.utils.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+/**
+ * Simple sample
+ */
 class DiffUtilActivity: Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
