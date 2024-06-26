@@ -90,7 +90,6 @@ class DiffUtilActivity: Activity() {
         changeButton.backgroundTintList = ColorStateList.valueOf(Color.BLACK)
         changeButton.setImageResource(R.drawable.ic_refresh)
         changeButton.imageTintList = ColorStateList.valueOf(Color.WHITE)
-        val displayMetrics = resources.displayMetrics
         contentView.addView(
             changeButton,
             FrameLayout
