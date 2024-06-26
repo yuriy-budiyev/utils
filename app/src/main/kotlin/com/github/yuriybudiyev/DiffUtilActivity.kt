@@ -191,12 +191,14 @@ private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        textView.setPaddingRelative(
-            context.convertDpToPx(16F),
-            context.convertDpToPx(12F),
-            context.convertDpToPx(16F),
-            context.convertDpToPx(12F),
-        )
+        with(context) {
+            textView.setPaddingRelative(
+                convertDpToPx(16F),
+                convertDpToPx(12F),
+                convertDpToPx(16F),
+                convertDpToPx(12F),
+            )
+        }
         textView.setTypeface(
             Typeface.create(
                 "sans-serif",
@@ -257,6 +259,10 @@ private fun buildOldItems(): List<TextItem> =
         TextItem(
             8,
             "Z"
+        ),
+        TextItem(
+            10,
+            "G"
         ),
         TextItem(
             11,
@@ -348,6 +354,6 @@ private fun buildNewItems(): List<TextItem> =
         ),
         TextItem(
             2,
-            "L"
+            "M"
         ),
     )
