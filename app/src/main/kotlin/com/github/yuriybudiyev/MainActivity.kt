@@ -22,24 +22,9 @@
  * SOFTWARE.
  */
 
-package com.github.yuriybudiyev.diff_util
+package com.github.yuriybudiyev
 
-import androidx.annotation.ColorInt
+import androidx.appcompat.app.AppCompatActivity
 
-data class Colors(
-
-    @ColorInt
-    val background: Int,
-
-    @ColorInt
-    val onBackground: Int,
-
-    @ColorInt
-    val buttonBackground: Int,
-
-    @ColorInt
-    val onButtonBackground: Int,
-
-    @ColorInt
-    val separator: Int,
-)
+class MainActivity: AppCompatActivity() {
+}

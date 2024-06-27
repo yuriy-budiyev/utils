@@ -24,47 +24,30 @@
 
 package com.github.yuriybudiyev.diff_util
 
-import android.app.Activity
 import android.content.res.ColorStateList
-import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.yuriybudiyev.utils.R
+import com.github.yuriybudiyev.utils.colors.getColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * Simple sample
  */
-class DiffUtilActivity: Activity() {
+class DiffUtilActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val colors = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_NO -> Colors(
-                Color.WHITE,
-                Color.BLACK,
-                Color.BLACK,
-                Color.WHITE,
-                Color.BLACK
-
-            )
-            else -> Colors(
-                Color.BLACK,
-                Color.WHITE,
-                Color.WHITE,
-                Color.BLACK,
-                Color.WHITE
-            )
-        }
+        val colors = getColors()
         val contentView = FrameLayout(this)
         recyclerView = RecyclerView(this)
         setContentView(

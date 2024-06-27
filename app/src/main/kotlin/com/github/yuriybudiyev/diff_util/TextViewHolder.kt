@@ -34,6 +34,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.github.yuriybudiyev.utils.colors.Colors
 
 class TextViewHolder(
     context: Context,

@@ -27,6 +27,7 @@ package com.github.yuriybudiyev.diff_util
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.yuriybudiyev.utils.colors.Colors
 
 class TextListAdapter(
     private val context: Context,
