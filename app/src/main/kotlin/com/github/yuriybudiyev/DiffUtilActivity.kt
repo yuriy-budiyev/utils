@@ -102,7 +102,7 @@ class DiffUtilActivity: Activity() {
         )
         decoration.setDrawable(ShapeDrawable(RectShape()).apply {
             paint.color = colors.separator
-            intrinsicHeight = convertDpToPx(0.5F).coerceAtLeast(1)
+            intrinsicHeight = convertDpToPx(1.0F).coerceAtLeast(1)
         })
         recyclerView.addItemDecoration(decoration)
         val oldItems = buildOldItems()
@@ -127,8 +127,8 @@ class DiffUtilActivity: Activity() {
                     Gravity.BOTTOM or Gravity.END
                 )
                 .apply {
-                    marginEnd = convertDpToPx(16F)
-                    bottomMargin = convertDpToPx(16F)
+                    marginEnd = convertDpToPx(16.0F)
+                    bottomMargin = convertDpToPx(16.0F)
                 }
         )
         changeButton.setOnClickListener {
@@ -257,10 +257,10 @@ private class TextViewHolder(
         contentView.orientation = LinearLayout.HORIZONTAL
         with(context) {
             contentView.setPaddingRelative(
-                convertDpToPx(16F),
-                convertDpToPx(12F),
-                convertDpToPx(16F),
-                convertDpToPx(12F),
+                convertDpToPx(16.0F),
+                convertDpToPx(12.0F),
+                convertDpToPx(16.0F),
+                convertDpToPx(12.0F),
             )
         }
         textView.setTypeface(
