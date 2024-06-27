@@ -230,6 +230,10 @@ private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)
                 1F
             )
         )
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            item?.isChecked = isChecked
+        }
+        checkBox.buttonTintList = ColorStateList.valueOf(Color.BLACK)
         contentView.addView(
             checkBox,
             LinearLayout.LayoutParams(
@@ -237,9 +241,6 @@ private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)
                 LinearLayout.LayoutParams.WRAP_CONTENT,
             )
         )
-        checkBox.setOnCheckedChangeListener { _, isChecked ->
-            item?.isChecked = isChecked
-        }
     }
 }
 
