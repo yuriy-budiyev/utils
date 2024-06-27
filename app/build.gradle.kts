@@ -9,10 +9,12 @@ android {
 
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
-        minSdk = 26
+        minSdk = 34
+        compileSdk = 34
         targetSdk = 34
+        buildToolsVersion = "34.0.0"
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
     }
 
     buildTypes {

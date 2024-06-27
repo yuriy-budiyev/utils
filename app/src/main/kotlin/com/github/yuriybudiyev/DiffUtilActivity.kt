@@ -27,8 +27,10 @@ package com.github.yuriybudiyev
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
@@ -37,6 +39,7 @@ import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,12 +50,28 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.math.roundToInt
 
 /**
- * Simple sample
+ * Simple sample, intentionally in one file
  */
 class DiffUtilActivity: Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val backgroundColor: Int
+        val onBackgroundColor: Int
+        val colors = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> Colors(
+                Color.WHITE,
+                Color.BLACK,
+                Color.BLACK,
+                Color.WHITE
+            )
+            else -> Colors(
+                Color.BLACK,
+                Color.WHITE,
+                Color.WHITE,
+                Color.BLACK
+            )
+        }
         val contentView = FrameLayout(this)
         recyclerView = RecyclerView(this)
         setContentView(
@@ -85,13 +104,14 @@ class DiffUtilActivity: Activity() {
         var oldItemsDisplayed = true
         val adapter = TextListAdapter(
             this,
+            colors,
             oldItems
         )
         recyclerView.adapter = adapter
         val changeButton = FloatingActionButton(this)
-        changeButton.backgroundTintList = ColorStateList.valueOf(Color.BLACK)
+        changeButton.backgroundTintList = ColorStateList.valueOf(colors.background)
         changeButton.setImageResource(R.drawable.ic_refresh)
-        changeButton.imageTintList = ColorStateList.valueOf(Color.WHITE)
+        changeButton.imageTintList = ColorStateList.valueOf(colors.onBackground)
         contentView.addView(
             changeButton,
             FrameLayout
@@ -126,6 +146,21 @@ class DiffUtilActivity: Activity() {
 
     private lateinit var recyclerView: RecyclerView
 }
+
+private data class Colors(
+
+    @ColorInt
+    val background: Int,
+
+    @ColorInt
+    val onBackground: Int,
+
+    @ColorInt
+    val buttonBackground: Int,
+
+    @ColorInt
+    val onButtonBackground: Int,
+)
 
 private data class TextItem(
     val id: Int,
@@ -163,6 +198,7 @@ private class TextListDiffCallback(
 
 private class TextListAdapter(
     private val context: Context,
+    private val colors: Colors,
     var items: List<TextItem>,
 ):
     RecyclerView.Adapter<TextViewHolder>() {
@@ -171,7 +207,10 @@ private class TextListAdapter(
         parent: ViewGroup,
         viewType: Int,
     ): TextViewHolder =
-        TextViewHolder(context)
+        TextViewHolder(
+            context,
+            colors
+        )
 
     override fun getItemCount(): Int =
         items.size
@@ -184,7 +223,10 @@ private class TextListAdapter(
     }
 }
 
-private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)) {
+private class TextViewHolder(
+    context: Context,
+    colors: Colors,
+): ViewHolder(LinearLayout(context)) {
 
     private val contentView: LinearLayout = itemView as LinearLayout
     private val textView: TextView = TextView(context)
@@ -202,6 +244,7 @@ private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+        contentView.background = ColorDrawable(colors.background)
         contentView.orientation = LinearLayout.HORIZONTAL
         with(context) {
             contentView.setPaddingRelative(
@@ -221,7 +264,7 @@ private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)
             TypedValue.COMPLEX_UNIT_SP,
             16F
         )
-        textView.setTextColor(Color.BLACK)
+        textView.setTextColor(colors.onBackground)
         contentView.addView(
             textView,
             LinearLayout.LayoutParams(
@@ -233,7 +276,7 @@ private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             item?.isChecked = isChecked
         }
-        checkBox.buttonTintList = ColorStateList.valueOf(Color.BLACK)
+        checkBox.buttonTintList = ColorStateList.valueOf(colors.onBackground)
         contentView.addView(
             checkBox,
             LinearLayout.LayoutParams(
