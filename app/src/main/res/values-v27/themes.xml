@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Utils.Base.V27" parent="Theme.Utils.Base">
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+
+    <style name="Theme.Utils" parent="Theme.Utils.Base.V27" />
+</resources>

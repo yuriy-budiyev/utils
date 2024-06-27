@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
-        minSdk = 34
+        minSdk = 26
         compileSdk = 34
         targetSdk = 34
         buildToolsVersion = "34.0.0"
