@@ -40,9 +40,6 @@ import com.github.yuriybudiyev.utils.R
 import com.github.yuriybudiyev.utils.colors.getColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-/**
- * Simple sample
- */
 class DiffUtilActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
