@@ -31,6 +31,8 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RectShape
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
@@ -56,20 +58,21 @@ class DiffUtilActivity: Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val backgroundColor: Int
-        val onBackgroundColor: Int
         val colors = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> Colors(
                 Color.WHITE,
                 Color.BLACK,
                 Color.BLACK,
-                Color.WHITE
+                Color.WHITE,
+                Color.BLACK
+
             )
             else -> Colors(
                 Color.BLACK,
                 Color.WHITE,
                 Color.WHITE,
-                Color.BLACK
+                Color.BLACK,
+                Color.WHITE
             )
         }
         val contentView = FrameLayout(this)
@@ -93,12 +96,15 @@ class DiffUtilActivity: Activity() {
             RecyclerView.VERTICAL,
             false
         )
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                this,
-                RecyclerView.VERTICAL
-            )
+        val decoration = DividerItemDecoration(
+            this,
+            RecyclerView.VERTICAL
         )
+        decoration.setDrawable(ShapeDrawable(RectShape()).apply {
+            paint.color = colors.separator
+            intrinsicHeight = convertDpToPx(1F)
+        })
+        recyclerView.addItemDecoration(decoration)
         val oldItems = buildOldItems()
         val newItems = buildNewItems()
         var oldItemsDisplayed = true
@@ -109,9 +115,9 @@ class DiffUtilActivity: Activity() {
         )
         recyclerView.adapter = adapter
         val changeButton = FloatingActionButton(this)
-        changeButton.backgroundTintList = ColorStateList.valueOf(colors.background)
+        changeButton.backgroundTintList = ColorStateList.valueOf(colors.buttonBackground)
         changeButton.setImageResource(R.drawable.ic_refresh)
-        changeButton.imageTintList = ColorStateList.valueOf(colors.onBackground)
+        changeButton.imageTintList = ColorStateList.valueOf(colors.onButtonBackground)
         contentView.addView(
             changeButton,
             FrameLayout
@@ -160,6 +166,9 @@ private data class Colors(
 
     @ColorInt
     val onButtonBackground: Int,
+
+    @ColorInt
+    val separator: Int,
 )
 
 private data class TextItem(
