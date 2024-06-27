@@ -33,7 +33,9 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -128,6 +130,7 @@ class DiffUtilActivity: Activity() {
 private data class TextItem(
     val id: Int,
     val text: String,
+    var isChecked: Boolean,
 )
 
 private class TextListDiffCallback(
@@ -150,8 +153,12 @@ private class TextListDiffCallback(
     override fun areContentsTheSame(
         oldItemPosition: Int,
         newItemPosition: Int,
-    ): Boolean =
-        oldItems[oldItemPosition].text == newItems[newItemPosition].text
+    ): Boolean {
+        val oldItem = oldItems[oldItemPosition]
+        val newItem = newItems[newItemPosition]
+        return oldItem.text == newItem.text
+            && oldItem.isChecked == newItem.isChecked
+    }
 }
 
 private class TextListAdapter(
@@ -173,25 +180,31 @@ private class TextListAdapter(
         holder: TextViewHolder,
         position: Int,
     ) {
-        holder.bind(items[position].text)
+        holder.bind(items[position])
     }
 }
 
-private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
+private class TextViewHolder(context: Context): ViewHolder(LinearLayout(context)) {
 
-    val textView: TextView = itemView as TextView
+    private val contentView: LinearLayout = itemView as LinearLayout
+    private val textView: TextView = TextView(context)
+    private val checkBox: CheckBox = CheckBox(context)
+    private var item: TextItem? = null
 
-    fun bind(text: String) {
-        textView.text = text
+    fun bind(item: TextItem) {
+        this.item = item
+        textView.text = item.text
+        checkBox.isChecked = item.isChecked
     }
 
     init {
-        textView.layoutParams = ViewGroup.LayoutParams(
+        contentView.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+        contentView.orientation = LinearLayout.HORIZONTAL
         with(context) {
-            textView.setPaddingRelative(
+            contentView.setPaddingRelative(
                 convertDpToPx(16F),
                 convertDpToPx(12F),
                 convertDpToPx(16F),
@@ -209,6 +222,24 @@ private class TextViewHolder(context: Context): ViewHolder(TextView(context)) {
             16F
         )
         textView.setTextColor(Color.BLACK)
+        contentView.addView(
+            textView,
+            LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1F
+            )
+        )
+        contentView.addView(
+            checkBox,
+            LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+            )
+        )
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            item?.isChecked = isChecked
+        }
     }
 }
 
@@ -225,71 +256,88 @@ private fun buildOldItems(): List<TextItem> =
     listOf(
         TextItem(
             0,
-            "A"
+            "A",
+            false
         ),
         TextItem(
             1,
-            "A"
+            "A",
+            true
         ),
         TextItem(
             2,
-            "B"
+            "B",
+            true
         ),
         TextItem(
             3,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             4,
-            "X"
+            "X",
+            true
         ),
         TextItem(
             5,
-            "B"
+            "B",
+            true
         ),
         TextItem(
             6,
-            "Z"
+            "Z",
+            true
         ),
         TextItem(
             7,
-            "T"
+            "T",
+            true
         ),
         TextItem(
             8,
-            "Z"
+            "Z",
+            true
         ),
         TextItem(
             10,
-            "G"
+            "G",
+            true
         ),
         TextItem(
             11,
-            "H"
+            "H",
+            true
         ),
         TextItem(
             12,
-            "I"
+            "I",
+            true
         ),
         TextItem(
             9,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             13,
-            "B"
+            "B",
+            true
         ),
         TextItem(
             14,
-            "G"
+            "G",
+            true
         ),
         TextItem(
             15,
-            "L"
+            "L",
+            true
         ),
         TextItem(
             16,
-            "L"
+            "L",
+            true
         ),
     )
 
@@ -297,62 +345,77 @@ private fun buildNewItems(): List<TextItem> =
     listOf(
         TextItem(
             11,
-            "B"
+            "B",
+            true
         ),
         TextItem(
             14,
-            "A"
+            "A",
+            true
         ),
         TextItem(
             15,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             16,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             4,
-            "X"
+            "X",
+            true
         ),
         TextItem(
             5,
-            "Z"
+            "Z",
+            true
         ),
         TextItem(
             6,
-            "E"
+            "E",
+            true
         ),
         TextItem(
             10,
-            "G"
+            "G",
+            true
         ),
         TextItem(
             7,
-            "T"
+            "T",
+            true
         ),
         TextItem(
             8,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             9,
-            "C"
+            "C",
+            true
         ),
         TextItem(
             13,
-            "B"
+            "B",
+            true
         ),
         TextItem(
             0,
-            "G"
+            "G",
+            true
         ),
         TextItem(
             1,
-            "L"
+            "L",
+            true
         ),
         TextItem(
             2,
-            "M"
+            "M",
+            true
         ),
     )
