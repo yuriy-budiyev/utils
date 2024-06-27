@@ -49,9 +49,13 @@
 package com.github.yuriybudiyev.utils.colors
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import androidx.annotation.ColorInt
+import androidx.annotation.FloatRange
+import androidx.annotation.IntRange
+import kotlin.math.roundToInt
 
 fun Context.getColors(): Colors =
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
@@ -59,6 +63,7 @@ fun Context.getColors(): Colors =
             Color.WHITE,
             Color.BLACK,
             Color.BLACK,
+            Color.WHITE,
             Color.WHITE,
             Color.BLACK
 
@@ -68,9 +73,50 @@ fun Context.getColors(): Colors =
             Color.WHITE,
             Color.WHITE,
             Color.BLACK,
+            Color.BLACK,
             Color.WHITE
         )
     }
+
+fun buildButtonColorStateList(colors: Colors): ColorStateList =
+    ColorStateList(
+        arrayOf(
+            intArrayOf(-android.R.attr.state_pressed),
+            intArrayOf(android.R.attr.state_pressed)
+        ),
+        intArrayOf(
+            colors.buttonBackground,
+            colors.buttonBackgroundPressed,
+        )
+    )
+
+@ColorInt
+fun applyAlpha(
+    @ColorInt color: Int,
+    @FloatRange(
+        from = 0.0,
+        to = 1.0
+    ) alpha: Float,
+): Int =
+    applyAlpha(
+        color,
+        (255 * alpha).roundToInt()
+    )
+
+@ColorInt
+fun applyAlpha(
+    @ColorInt color: Int,
+    @IntRange(
+        from = 0,
+        to = 255
+    ) alpha: Int,
+): Int =
+    Color.argb(
+        alpha,
+        Color.red(color),
+        Color.green(color),
+        Color.blue(color)
+    )
 
 data class Colors(
 
@@ -82,6 +128,9 @@ data class Colors(
 
     @ColorInt
     val buttonBackground: Int,
+
+    @ColorInt
+    val buttonBackgroundPressed: Int,
 
     @ColorInt
     val onButtonBackground: Int,

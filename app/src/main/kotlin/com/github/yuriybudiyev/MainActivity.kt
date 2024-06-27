@@ -24,9 +24,60 @@
 
 package com.github.yuriybudiyev
 
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.github.yuriybudiyev.diff_util.DiffUtilActivity
+import com.github.yuriybudiyev.diff_util.convertDpToPx
+import com.github.yuriybudiyev.utils.R
+import com.github.yuriybudiyev.utils.colors.buildButtonColorStateList
+import com.github.yuriybudiyev.utils.colors.getColors
 
 class MainActivity: AppCompatActivity() {
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val colors = getColors()
+        val contentView = ConstraintLayout(this)
+        contentView.id = View.generateViewId()
+        val diffUtilButton = Button(this)
+        diffUtilButton.id = View.generateViewId()
+        diffUtilButton.backgroundTintList = buildButtonColorStateList(colors)
+        diffUtilButton.setTextColor(colors.onButtonBackground)
+        diffUtilButton.isAllCaps = false
+        diffUtilButton.text = getString(R.string.activity_diff_util)
+        diffUtilButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    DiffUtilActivity::class.java
+                )
+            )
+        }
+        contentView.addView(diffUtilButton,
+            ConstraintLayout
+                .LayoutParams(
+                    ConstraintLayout.LayoutParams.MATCH_CONSTRAINT,
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT
+                )
+                .apply {
+                    startToStart = contentView.id
+                    topToTop = contentView.id
+                    endToEnd = contentView.id
+                    topMargin = convertDpToPx(12.0F)
+                    marginStart = convertDpToPx(16.0F)
+                    marginEnd = convertDpToPx(16.0F)
+                })
+        setContentView(
+            contentView,
+            ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
+    }
 }
