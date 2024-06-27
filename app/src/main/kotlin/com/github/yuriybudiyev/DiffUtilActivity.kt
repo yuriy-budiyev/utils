@@ -102,7 +102,7 @@ class DiffUtilActivity: Activity() {
         )
         decoration.setDrawable(ShapeDrawable(RectShape()).apply {
             paint.color = colors.separator
-            intrinsicHeight = convertDpToPx(1F)
+            intrinsicHeight = convertDpToPx(0.5F).coerceAtLeast(1)
         })
         recyclerView.addItemDecoration(decoration)
         val oldItems = buildOldItems()
