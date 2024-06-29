@@ -33,8 +33,7 @@ class TextListAdapter(
     private val context: Context,
     private val colors: Colors,
     var items: List<TextItem>,
-):
-    RecyclerView.Adapter<TextViewHolder>() {
+): RecyclerView.Adapter<TextViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
