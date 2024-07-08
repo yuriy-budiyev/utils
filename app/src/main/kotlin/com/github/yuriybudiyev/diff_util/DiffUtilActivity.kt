@@ -46,7 +46,7 @@ class DiffUtilActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val colors = getColors()
         val contentView = FrameLayout(this)
-        recyclerView = RecyclerView(this)
+        val recyclerView = RecyclerView(this)
         setContentView(
             contentView,
             ViewGroup.LayoutParams(
@@ -119,6 +119,4 @@ class DiffUtilActivity: AppCompatActivity() {
             diffResult.dispatchUpdatesTo(adapter)
         }
     }
-
-    private lateinit var recyclerView: RecyclerView
 }
