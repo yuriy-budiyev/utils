@@ -33,8 +33,6 @@ import java.util.concurrent.ScheduledExecutorService
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-const val DEFAULT_THREAD_POOL_SIZE: Int = 4
-
 /**
  * [CoroutineDispatcher] based on scheduled thread pool executor
  * with [Process.THREAD_PRIORITY_BACKGROUND] thread priority.
@@ -57,7 +55,8 @@ fun createWorkerExecutorService(): ScheduledExecutorService =
         Runtime
             .getRuntime()
             .availableProcessors()
-            .coerceAtMost(DEFAULT_THREAD_POOL_SIZE)
+            .minus(2)
+            .coerceAtLeast(2)
     )
 
 private object WorkerDispatcherHolder: ReadOnlyProperty<Dispatchers, CoroutineDispatcher> {
