@@ -56,7 +56,7 @@ fun createWorkerExecutorService(): ScheduledExecutorService =
             .getRuntime()
             .availableProcessors()
             .minus(2)
-            .coerceAtLeast(2)
+            .coerceAtLeast(1)
     )
 
 private object WorkerDispatcherHolder: ReadOnlyProperty<Dispatchers, CoroutineDispatcher> {
