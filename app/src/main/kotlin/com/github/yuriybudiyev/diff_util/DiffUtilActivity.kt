@@ -36,11 +36,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.yuriybudiyev.core.EdgeToEdgeActivity
 import com.github.yuriybudiyev.utils.R
 import com.github.yuriybudiyev.utils.colors.getColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class DiffUtilActivity: AppCompatActivity() {
+class DiffUtilActivity: EdgeToEdgeActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

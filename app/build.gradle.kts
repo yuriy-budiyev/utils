@@ -5,13 +5,13 @@ plugins {
 
 android {
     namespace = "com.github.yuriybudiyev.utils"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
         minSdk = 26
-        compileSdk = 34
-        targetSdk = 34
+        compileSdk = 35
+        targetSdk = 35
         buildToolsVersion = "34.0.0"
         versionCode = 1
         versionName = "1.0.0"

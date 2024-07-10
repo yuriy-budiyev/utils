@@ -31,13 +31,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.github.yuriybudiyev.core.EdgeToEdgeActivity
 import com.github.yuriybudiyev.diff_util.DiffUtilActivity
 import com.github.yuriybudiyev.diff_util.convertDpToPx
 import com.github.yuriybudiyev.utils.R
 import com.github.yuriybudiyev.utils.colors.buildButtonColorStateList
 import com.github.yuriybudiyev.utils.colors.getColors
 
-class MainActivity: AppCompatActivity() {
+class MainActivity: EdgeToEdgeActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
