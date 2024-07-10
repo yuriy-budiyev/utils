@@ -59,22 +59,21 @@ import kotlin.math.roundToInt
 
 fun Context.getColors(): Colors =
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-        Configuration.UI_MODE_NIGHT_NO -> Colors(
-            Color.WHITE,
-            Color.BLACK,
-            Color.BLACK,
-            Color.WHITE,
-            Color.WHITE,
-            Color.BLACK
-
+        Configuration.UI_MODE_NIGHT_YES -> Colors(
+            background = Color.BLACK,
+            onBackground = Color.WHITE,
+            buttonBackground = Color.WHITE,
+            buttonBackgroundPressed = Color.BLACK,
+            onButtonBackground = Color.BLACK,
+            separator = Color.WHITE
         )
         else -> Colors(
-            Color.BLACK,
-            Color.WHITE,
-            Color.WHITE,
-            Color.BLACK,
-            Color.BLACK,
-            Color.WHITE
+            background = Color.WHITE,
+            onBackground = Color.BLACK,
+            buttonBackground = Color.BLACK,
+            buttonBackgroundPressed = Color.WHITE,
+            onButtonBackground = Color.WHITE,
+            separator = Color.BLACK
         )
     }
 
