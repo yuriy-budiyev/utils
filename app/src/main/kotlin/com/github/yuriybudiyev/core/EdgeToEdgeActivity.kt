@@ -68,10 +68,8 @@ abstract class EdgeToEdgeActivity: AppCompatActivity() {
     }
 
     override fun setContentView(view: View) {
-        this.setContentView(
-            view,
-            null
-        )
+        super.setContentView(view)
+        enableInsetsCompat(view)
     }
 
     override fun setContentView(
@@ -82,6 +80,10 @@ abstract class EdgeToEdgeActivity: AppCompatActivity() {
             view,
             params
         )
+        enableInsetsCompat(view)
+    }
+
+    private fun enableInsetsCompat(view: View) {
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
