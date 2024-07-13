@@ -38,7 +38,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 
-abstract class EdgeToEdgeActivity: AppCompatActivity() {
+abstract class EdgeToEdgeWithSystemBarsInsetsActivity: AppCompatActivity() {
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {

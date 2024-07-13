@@ -31,17 +31,16 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.github.yuriybudiyev.core.EdgeToEdgeActivity
+import com.github.yuriybudiyev.core.EdgeToEdgeWithSystemBarsInsetsActivity
 import com.github.yuriybudiyev.utils.R
 import com.github.yuriybudiyev.utils.colors.getColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class DiffUtilActivity: EdgeToEdgeActivity() {
+class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
