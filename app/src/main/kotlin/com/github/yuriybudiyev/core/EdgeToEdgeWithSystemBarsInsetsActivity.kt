@@ -26,13 +26,11 @@ package com.github.yuriybudiyev.core
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.CallSuper
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -44,47 +42,17 @@ abstract class EdgeToEdgeWithSystemBarsInsetsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge(
             SystemBarStyle.auto(
-                Color.BLACK,
-                Color.WHITE
+                Color.WHITE,
+                Color.BLACK
             ),
             SystemBarStyle.auto(
-                Color.BLACK,
-                Color.WHITE
+                Color.WHITE,
+                Color.BLACK
             )
         )
         super.onCreate(savedInstanceState)
-    }
-
-    override fun setContentView(@LayoutRes layoutResID: Int) {
-        this.setContentView(
-            LayoutInflater
-                .from(this)
-                .inflate(
-                    layoutResID,
-                    null,
-                    false
-                )
-        )
-    }
-
-    override fun setContentView(view: View) {
-        super.setContentView(view)
-        enableInsetsCompat(view)
-    }
-
-    override fun setContentView(
-        view: View,
-        params: ViewGroup.LayoutParams?,
-    ) {
-        super.setContentView(
-            view,
-            params
-        )
-        enableInsetsCompat(view)
-    }
-
-    private fun enableInsetsCompat(view: View) {
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+        val androidContentView = findViewById<View>(android.R.id.content)
+        ViewCompat.setOnApplyWindowInsetsListener(androidContentView) { v, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 leftMargin = insets.left
