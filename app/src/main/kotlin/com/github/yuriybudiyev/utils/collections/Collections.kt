@@ -34,10 +34,10 @@ fun <E> MutableList<E>.swap(
     second: Int,
 ) {
     set(
-        first,
-        set(
-            second,
-            get(first)
+        index = first,
+        element = set(
+            index = second,
+            element = get(first)
         )
     )
 }
