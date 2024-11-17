@@ -306,7 +306,10 @@ inline fun <K, V, R, D: MutableMap<K, R>> Sequence<V>.associateByNotNullTo(
  * Null keys are skipped.
  */
 inline fun <K, V> Iterable<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, List<V>> =
-    groupByNotNull(keySelector) { it }
+    groupByNotNull(
+        keySelector = keySelector,
+        valueTransform = { it }
+    )
 
 /**
  * Groups elements of [this] sequence by the key returned by the given [keySelector] function
@@ -320,9 +323,10 @@ inline fun <K, V, D: MutableMap<K, MutableList<V>>> Iterable<V>.groupByNotNullTo
     keySelector: (V) -> K?,
 ): D =
     groupByNotNullTo(
-        destination,
-        keySelector
-    ) { it }
+        destination = destination,
+        keySelector = keySelector,
+        valueTransform = { it }
+    )
 
 /**
  * Groups values returned by the [valueTransform] function applied to each element
@@ -338,9 +342,9 @@ inline fun <K, V, R> Iterable<V>.groupByNotNull(
     valueTransform: (V) -> R?,
 ): Map<K, List<R>> =
     groupByNotNullTo(
-        LinkedHashMap(),
-        keySelector,
-        valueTransform
+        destination = LinkedHashMap(),
+        keySelector = keySelector,
+        valueTransform = valueTransform
     )
 
 /**
@@ -377,7 +381,10 @@ inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Iterable<V>.groupByNotNul
  * Null keys are skipped.
  */
 inline fun <K, V> Sequence<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, List<V>> =
-    groupByNotNull(keySelector) { it }
+    groupByNotNull(
+        keySelector = keySelector,
+        valueTransform = { it }
+    )
 
 /**
  * Groups elements of [this] sequence by the key returned by the given [keySelector] function
@@ -391,9 +398,10 @@ inline fun <K, V, D: MutableMap<K, MutableList<V>>> Sequence<V>.groupByNotNullTo
     keySelector: (V) -> K?,
 ): D =
     groupByNotNullTo(
-        destination,
-        keySelector
-    ) { it }
+        destination = destination,
+        keySelector = keySelector,
+        valueTransform = { it }
+    )
 
 /**
  * Groups values returned by the [valueTransform] function applied to each element
@@ -409,9 +417,9 @@ inline fun <K, V, R> Sequence<V>.groupByNotNull(
     valueTransform: (V) -> R?,
 ): Map<K, List<R>> =
     groupByNotNullTo(
-        LinkedHashMap(),
-        keySelector,
-        valueTransform
+        destination = LinkedHashMap(),
+        keySelector = keySelector,
+        valueTransform = valueTransform
     )
 
 /**
@@ -446,8 +454,8 @@ inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Sequence<V>.groupByNotNul
  */
 inline fun <E, V> Iterable<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
     toCollectionNotNull(
-        LinkedHashSet(),
-        valueTransform
+        destination = LinkedHashSet(),
+        valueTransform = valueTransform
     )
 
 /**
@@ -458,8 +466,8 @@ inline fun <E, V> Iterable<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
  */
 inline fun <E, V> Sequence<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
     toCollectionNotNull(
-        LinkedHashSet(),
-        valueTransform
+        destination = LinkedHashSet(),
+        valueTransform = valueTransform
     )
 
 /**
