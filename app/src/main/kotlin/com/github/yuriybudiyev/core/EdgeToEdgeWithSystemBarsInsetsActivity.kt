@@ -42,12 +42,12 @@ abstract class EdgeToEdgeWithSystemBarsInsetsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.WHITE,
-                darkScrim = Color.BLACK
+                lightScrim = Color.TRANSPARENT,
+                darkScrim = Color.TRANSPARENT
             ),
             navigationBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.WHITE,
-                darkScrim = Color.BLACK
+                lightScrim = Color.TRANSPARENT,
+                darkScrim = Color.TRANSPARENT
             )
         )
         super.onCreate(savedInstanceState)
