@@ -393,48 +393,47 @@ fun Calendar.removeMilliseconds(milliseconds: Int): Calendar {
 /**
  * Returns `true` if [this] calendar date is after [other]
  */
-fun Calendar.isAfter(other: Calendar) =
+fun Calendar.isAfter(other: Calendar): Boolean =
     compareTo(other) > 0
 
 /**
  * Returns `true` if [this] calendar date is before [other]
  */
-fun Calendar.isBefore(other: Calendar) =
+fun Calendar.isBefore(other: Calendar): Boolean =
     compareTo(other) < 0
 
 /**
  * Returns `true` if [this] calendar and [other] have same
  * [Calendar.YEAR] and [Calendar.DAY_OF_YEAR]
  */
-fun Calendar.isSameDay(other: Calendar) =
+fun Calendar.isSameDay(other: Calendar): Boolean =
     year == other.year && dayOfYear == other.dayOfYear
 
 /**
  * Returns `true` if [this] calendar and [other] have same
  * [Calendar.YEAR] and [Calendar.WEEK_OF_YEAR]
  */
-fun Calendar.isSameWeek(other: Calendar) =
+fun Calendar.isSameWeek(other: Calendar): Boolean =
     year == other.year && weekOfYear == other.weekOfYear
 
 /**
  * Returns `true` if [this] calendar and [other] have same
  * [Calendar.YEAR] and [Calendar.MONTH]
  */
-fun Calendar.isSameMonth(other: Calendar) =
+fun Calendar.isSameMonth(other: Calendar): Boolean =
     year == other.year && month == other.month
 
 /**
  * Returns `true` if [this] calendar and [other] have same [Calendar.YEAR]
  */
-fun Calendar.isSameYear(other: Calendar) =
+fun Calendar.isSameYear(other: Calendar): Boolean =
     year == other.year
 
 /**
  * Returns years from [this] calendar until [end] one
  */
-fun Calendar.yearsUntil(end: Calendar): Int {
-    return monthsUntil(end) / 12
-}
+fun Calendar.yearsUntil(end: Calendar): Int =
+    monthsUntil(end) / 12
 
 /**
  * Returns months from [this] calendar until [end] one
