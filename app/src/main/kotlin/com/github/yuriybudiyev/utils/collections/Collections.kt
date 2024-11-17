@@ -79,12 +79,6 @@ fun <E> Collection<E>.copy(): ArrayList<E> {
 }
 
 /**
- * Returns an [ArrayList] containing all elements of this collection
- */
-fun <E> Collection<E>.toArrayList(): ArrayList<E> =
-    ArrayList(this)
-
-/**
  * Returns a list with [size] amount of `null` values
  */
 inline fun <reified E> listOfNulls(size: Int): List<E?> =
