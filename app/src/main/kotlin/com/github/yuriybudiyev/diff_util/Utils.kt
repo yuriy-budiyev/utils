@@ -40,167 +40,167 @@ fun Context.convertDpToPx(dp: Float): Int =
 fun buildOldItems(): List<TextItem> =
     listOf(
         TextItem(
-            0,
-            "P",
-            false
+            id = 0,
+            text = "P",
+            isChecked = false
         ),
         TextItem(
-            1,
-            "A",
-            true
+            id = 1,
+            text = "A",
+            isChecked = true
         ),
         TextItem(
-            2,
-            "B",
-            true
+            id = 2,
+            text = "B",
+            isChecked = true
         ),
         TextItem(
-            3,
-            "C",
-            true
+            id = 3,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            4,
-            "X",
-            true
+            id = 4,
+            text = "X",
+            isChecked = true
         ),
         TextItem(
-            5,
-            "B",
-            true
+            id = 5,
+            text = "B",
+            isChecked = true
         ),
         TextItem(
-            6,
-            "Z",
-            true
+            id = 6,
+            text = "Z",
+            isChecked = true
         ),
         TextItem(
-            7,
-            "T",
-            true
+            id = 7,
+            text = "T",
+            isChecked = true
         ),
         TextItem(
-            8,
-            "Z",
-            true
+            id = 8,
+            text = "Z",
+            isChecked = true
         ),
         TextItem(
-            10,
-            "G",
-            true
+            id = 10,
+            text = "G",
+            isChecked = true
         ),
         TextItem(
-            11,
-            "H",
-            true
+            id = 11,
+            text = "H",
+            isChecked = true
         ),
         TextItem(
-            12,
-            "I",
-            true
+            id = 12,
+            text = "I",
+            isChecked = true
         ),
         TextItem(
-            9,
-            "C",
-            true
+            id = 9,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            13,
-            "B",
-            true
+            id = 13,
+            text = "B",
+            isChecked = true
         ),
         TextItem(
-            14,
-            "G",
-            true
+            id = 14,
+            text = "G",
+            isChecked = true
         ),
         TextItem(
-            15,
-            "L",
-            true
+            id = 15,
+            text = "L",
+            isChecked = true
         ),
         TextItem(
-            16,
-            "L",
-            true
+            id = 16,
+            text = "L",
+            isChecked = true
         ),
     )
 
 fun buildNewItems(): List<TextItem> =
     listOf(
         TextItem(
-            0,
-            "P",
-            true
+            id = 0,
+            text = "P",
+            isChecked = true
         ),
         TextItem(
-            11,
-            "A",
-            false
+            id = 11,
+            text = "A",
+            isChecked = false
         ),
         TextItem(
-            14,
-            "A",
-            true
+            id = 14,
+            text = "A",
+            isChecked = true
         ),
         TextItem(
-            15,
-            "C",
-            true
+            id = 15,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            16,
-            "C",
-            true
+            id = 16,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            4,
-            "X",
-            true
+            id = 4,
+            text = "X",
+            isChecked = true
         ),
         TextItem(
-            5,
-            "Z",
-            true
+            id = 5,
+            text = "Z",
+            isChecked = true
         ),
         TextItem(
-            6,
-            "E",
-            true
+            id = 6,
+            text = "E",
+            isChecked = true
         ),
         TextItem(
-            10,
-            "G",
-            true
+            id = 10,
+            text = "G",
+            isChecked = true
         ),
         TextItem(
-            7,
-            "T",
-            true
+            id = 7,
+            text = "T",
+            isChecked = true
         ),
         TextItem(
-            8,
-            "C",
-            true
+            id = 8,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            9,
-            "C",
-            true
+            id = 9,
+            text = "C",
+            isChecked = true
         ),
         TextItem(
-            13,
-            "B",
-            true
+            id = 13,
+            text = "B",
+            isChecked = true
         ),
         TextItem(
-            1,
-            "L",
-            true
+            id = 1,
+            text = "L",
+            isChecked = true
         ),
         TextItem(
-            2,
-            "M",
-            true
+            id = 2,
+            text = "M",
+            isChecked = true
         ),
     )
