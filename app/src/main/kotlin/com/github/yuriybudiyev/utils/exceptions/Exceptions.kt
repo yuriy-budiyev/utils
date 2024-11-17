@@ -35,12 +35,12 @@ fun Throwable.writeStackTraceTo(
     separator: String = System.lineSeparator(),
 ) {
     writeStackTrace(
-        this,
-        output,
-        null,
-        null,
-        separator,
-        Collections.newSetFromMap(IdentityHashMap())
+        throwable = this,
+        output = output,
+        caption1 = null,
+        caption2 = null,
+        separator = separator,
+        written = Collections.newSetFromMap(IdentityHashMap())
     )
 }
 
