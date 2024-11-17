@@ -60,8 +60,8 @@ class TextListDiffCallback(
         val oldItem = oldItems[oldItemPosition]
         val newItem = newItems[newItemPosition]
         return TextItemPayload(
-            oldItem.text != newItem.text,
-            oldItem.isChecked != newItem.isChecked
+            isTextChanged = oldItem.text != newItem.text,
+            isCheckedChanged = oldItem.isChecked != newItem.isChecked
         )
     }
 }

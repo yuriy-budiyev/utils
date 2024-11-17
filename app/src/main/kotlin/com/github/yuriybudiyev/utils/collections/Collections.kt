@@ -68,11 +68,15 @@ fun <E> Collection<E>.containsAny(elements: Iterable<E>): Boolean {
 }
 
 /**
- * Returns a shallow copy of this [ArrayList] instance
+ * Returns a shallow copy of this [Collection] instance as [ArrayList]
  */
-@Suppress("UNCHECKED_CAST")
-fun <E> ArrayList<E>.copy(): ArrayList<E> =
-    clone() as ArrayList<E>
+fun <E> Collection<E>.copy(): ArrayList<E> {
+    val result = ArrayList<E>(size)
+    for (item in this) {
+        result.add(item)
+    }
+    return result
+}
 
 /**
  * Returns an [ArrayList] containing all elements of this collection

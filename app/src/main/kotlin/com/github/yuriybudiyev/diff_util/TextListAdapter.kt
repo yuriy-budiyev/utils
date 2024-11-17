@@ -40,8 +40,8 @@ class TextListAdapter(
         viewType: Int,
     ): TextViewHolder =
         TextViewHolder(
-            context,
-            colors
+            context = context,
+            colors = colors
         )
 
     override fun getItemCount(): Int =
@@ -55,13 +55,13 @@ class TextListAdapter(
         val payload = payloads.firstOrNull() as? TextItemPayload
         if (payload != null) {
             holder.bind(
-                items[position],
-                payload
+                item = items[position],
+                payload = payload
             )
         } else {
             onBindViewHolder(
-                holder,
-                position
+                holder = holder,
+                position = position
             )
         }
     }
