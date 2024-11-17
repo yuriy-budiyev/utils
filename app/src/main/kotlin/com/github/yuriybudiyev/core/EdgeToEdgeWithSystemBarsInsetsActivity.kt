@@ -52,9 +52,9 @@ abstract class EdgeToEdgeWithSystemBarsInsetsActivity: AppCompatActivity() {
         )
         super.onCreate(savedInstanceState)
         val androidContentView = findViewById<View>(android.R.id.content)
-        ViewCompat.setOnApplyWindowInsetsListener(androidContentView) { v, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(androidContentView) { view, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 leftMargin = insets.left
                 topMargin = insets.top
                 rightMargin = insets.right
