@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.bundles.androidx.annotation)
     implementation(libs.bundles.androidx.core)
     implementation(libs.bundles.androidx.appcompat)
+    implementation(libs.bundles.androidx.fragment)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
