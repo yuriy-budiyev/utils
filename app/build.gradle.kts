@@ -12,7 +12,7 @@ android {
         minSdk = 26
         compileSdk = 35
         targetSdk = 35
-        buildToolsVersion = "34.0.0"
+        buildToolsVersion = "35.0.0"
         versionCode = 1
         versionName = "1.0.0"
     }
@@ -32,6 +32,7 @@ android {
     compileOptions {
         sourceCompatibility(libs.versions.java.get())
         targetCompatibility(libs.versions.java.get())
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -44,6 +45,7 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.android.tools.desugar)
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.androidx.annotation)
     implementation(libs.bundles.androidx.core)
