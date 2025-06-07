@@ -27,12 +27,12 @@ package com.github.yuriybudiyev.diff_util
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
-import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.github.yuriybudiyev.utils.colors.Colors
 
@@ -70,7 +70,7 @@ class TextViewHolder(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        contentView.background = ColorDrawable(colors.background)
+        contentView.background = colors.background.toDrawable()
         contentView.orientation = LinearLayout.HORIZONTAL
         with(context) {
             contentView.setPaddingRelative(
