@@ -32,10 +32,10 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.yuriybudiyev.core.EdgeToEdgeWithSystemBarsInsetsActivity
 import com.github.yuriybudiyev.diff_util.DiffUtilActivity
+import com.github.yuriybudiyev.diff_util.colors.buildButtonColorStateList
+import com.github.yuriybudiyev.diff_util.colors.getColors
 import com.github.yuriybudiyev.diff_util.convertDpToPx
 import com.github.yuriybudiyev.utils.R
-import com.github.yuriybudiyev.utils.colors.buildButtonColorStateList
-import com.github.yuriybudiyev.utils.colors.getColors
 
 class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
 
@@ -58,7 +58,8 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                 )
             )
         }
-        contentView.addView(diffUtilButton,
+        contentView.addView(
+            diffUtilButton,
             ConstraintLayout
                 .LayoutParams(
                     ConstraintLayout.LayoutParams.MATCH_CONSTRAINT,

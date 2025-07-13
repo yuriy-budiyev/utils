@@ -448,16 +448,14 @@ fun Calendar.monthsUntil(end: Calendar): Int {
 /**
  * Returns weeks from [this] calendar until [end] one
  */
-fun Calendar.weeksUntil(end: Calendar): Int {
-    return daysUntil(end) / 7
-}
+fun Calendar.weeksUntil(end: Calendar): Int =
+    daysUntil(end) / 7
 
 /**
  * Returns days from [this] calendar until [end] one
  */
-fun Calendar.daysUntil(end: Calendar): Int {
-    return end.dayOfEra - dayOfEra
-}
+fun Calendar.daysUntil(end: Calendar): Int =
+    end.dayOfEra - dayOfEra
 
 /**
  * Returns a copy of [this] [Calendar]

@@ -46,7 +46,7 @@
  * SOFTWARE.
  */
 
-package com.github.yuriybudiyev.utils.colors
+package com.github.yuriybudiyev.diff_util.colors
 
 import android.content.Context
 import android.content.res.ColorStateList

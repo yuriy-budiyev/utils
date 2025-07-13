@@ -36,8 +36,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.yuriybudiyev.core.EdgeToEdgeWithSystemBarsInsetsActivity
+import com.github.yuriybudiyev.diff_util.colors.getColors
 import com.github.yuriybudiyev.utils.R
-import com.github.yuriybudiyev.utils.colors.getColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {

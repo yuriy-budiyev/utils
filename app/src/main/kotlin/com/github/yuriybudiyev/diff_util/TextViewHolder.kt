@@ -34,7 +34,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
-import com.github.yuriybudiyev.utils.colors.Colors
+import com.github.yuriybudiyev.diff_util.colors.Colors
 
 class TextViewHolder(
     context: Context,

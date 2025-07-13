@@ -7,7 +7,6 @@ plugins {
 
 android {
     namespace = "com.github.yuriybudiyev.utils"
-    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
