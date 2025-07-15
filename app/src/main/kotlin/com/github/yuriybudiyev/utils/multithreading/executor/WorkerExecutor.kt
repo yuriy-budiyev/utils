@@ -43,7 +43,7 @@ import java.util.concurrent.atomic.AtomicLong
 class WorkerExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
     corePoolSize,
     WorkerThreadFactory,
-    RejectedWorkerExecutionHandler
+    WorkerTaskRejectedExecutionHandler
 ) {
 
     override fun afterExecute(
@@ -92,7 +92,7 @@ class WorkerExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
         }
     }
 
-    private object RejectedWorkerExecutionHandler: RejectedExecutionHandler {
+    private object WorkerTaskRejectedExecutionHandler: RejectedExecutionHandler {
 
         override fun rejectedExecution(
             r: Runnable,
