@@ -30,6 +30,7 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
 import java.util.concurrent.RejectedExecutionException
+import java.util.concurrent.RejectedExecutionHandler
 import java.util.concurrent.ScheduledThreadPoolExecutor
 import java.util.concurrent.ThreadFactory
 import java.util.concurrent.ThreadPoolExecutor
@@ -42,7 +43,7 @@ import java.util.concurrent.atomic.AtomicLong
 class WorkerExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
     corePoolSize,
     WorkerThreadFactory,
-    RejectedExecutionHandler
+    RejectedWorkerExecutionHandler
 ) {
 
     override fun afterExecute(
@@ -91,7 +92,7 @@ class WorkerExecutor(corePoolSize: Int): ScheduledThreadPoolExecutor(
         }
     }
 
-    private object RejectedExecutionHandler: java.util.concurrent.RejectedExecutionHandler {
+    private object RejectedWorkerExecutionHandler: RejectedExecutionHandler {
 
         override fun rejectedExecution(
             r: Runnable,
