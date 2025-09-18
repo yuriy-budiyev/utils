@@ -119,21 +119,27 @@ fun applyAlpha(
 
 data class Colors(
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val background: Int,
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val onBackground: Int,
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val buttonBackground: Int,
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val buttonBackgroundPressed: Int,
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val onButtonBackground: Int,
 
-    @ColorInt
+    @param:ColorInt
+    @get:ColorInt
     val separator: Int,
 )
