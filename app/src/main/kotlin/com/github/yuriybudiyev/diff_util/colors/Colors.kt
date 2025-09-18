@@ -91,11 +91,13 @@ fun buildButtonColorStateList(colors: Colors): ColorStateList =
 
 @ColorInt
 fun applyAlpha(
-    @ColorInt color: Int,
+    @ColorInt
+    color: Int,
     @FloatRange(
         from = 0.0,
         to = 1.0
-    ) alpha: Float,
+    )
+    alpha: Float,
 ): Int =
     applyAlpha(
         color,
@@ -104,11 +106,13 @@ fun applyAlpha(
 
 @ColorInt
 fun applyAlpha(
-    @ColorInt color: Int,
+    @ColorInt
+    color: Int,
     @IntRange(
         from = 0,
         to = 255
-    ) alpha: Int,
+    )
+    alpha: Int,
 ): Int =
     Color.argb(
         alpha,
