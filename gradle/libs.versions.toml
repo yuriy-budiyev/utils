@@ -1,15 +1,15 @@
 [versions]
-agp = "8.12.0"
-kotlin = "2.2.0"
+agp = "8.13.0"
+kotlin = "2.2.20"
 kotlin-coroutines = "1.10.2"
 desugar = "2.1.5"
 androidx-annotation = "1.9.1"
 androidx-annotation-experimental = "1.5.1"
-androidx-core = "1.16.0"
+androidx-core = "1.17.0"
 androidx-recyclerview = "1.4.0"
 androidx-appcompat = "1.7.1"
-androidx-fragment = "1.8.8"
-google-material = "1.12.0"
+androidx-fragment = "1.8.9"
+google-material = "1.13.0"
 androidx-constraintlayout = "2.2.1"
 
 [plugins]
