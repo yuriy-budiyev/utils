@@ -55,7 +55,7 @@ fun Context.checkPackageAvailable(packageName: String): Boolean {
             PackageManager.GET_META_DATA
         )
         return true
-    } catch (e: PackageManager.NameNotFoundException) {
+    } catch (_: PackageManager.NameNotFoundException) {
         return false
     }
 }
