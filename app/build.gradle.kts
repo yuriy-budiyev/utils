@@ -8,12 +8,18 @@ plugins {
 android {
     namespace = "com.github.yuriybudiyev.utils"
 
+    buildToolsVersion = "36.1.0"
+
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
+
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
         minSdk = 26
-        compileSdk = 36
         targetSdk = 36
-        buildToolsVersion = "36.0.0"
         versionCode = 1
         versionName = "1.0.0"
     }
