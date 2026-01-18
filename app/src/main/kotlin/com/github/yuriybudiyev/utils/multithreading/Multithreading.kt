@@ -51,11 +51,7 @@ fun createWorkerCoroutineDispatcher(): CoroutineDispatcher =
  * can be used as [CoroutineDispatcher].
  */
 fun createWorkerExecutorService(): ScheduledExecutorService =
-    WorkerExecutor(
-        Runtime
-            .getRuntime()
-            .availableProcessors()
-    )
+    WorkerExecutor()
 
 private object WorkerDispatcherHolder: ReadOnlyProperty<Dispatchers, CoroutineDispatcher> {
 
