@@ -26,7 +26,22 @@ package com.github.yuriybudiyev.utils.collections
 
 import kotlin.math.abs
 
-class HashTable<Key, Value>(capacity: Int = 10) {
+class HashTable<Key, Value>(capacity: Int = 10): Iterable<HashTable.Entry<Key, Value>> {
+
+    class Entry<Key, Value>(
+        val key: Key,
+        val value: Value,
+    ) {
+
+        operator fun component1(): Key =
+            key
+
+        operator fun component2(): Value =
+            value
+
+        override fun toString(): String =
+            "(key=$key,value=$value)"
+    }
 
     var size: Int = 0
         private set
@@ -44,7 +59,11 @@ class HashTable<Key, Value>(capacity: Int = 10) {
                 break
             }
             if (entry.key == key) {
-                entry.value = value
+                modCount++
+                table[position] = Entry(
+                    key,
+                    value,
+                )
                 return
             }
             position = (position + 1) % table.size
@@ -54,6 +73,7 @@ class HashTable<Key, Value>(capacity: Int = 10) {
             }
         }
         size += 1
+        modCount++
         table[position] = Entry(
             key,
             value,
@@ -82,6 +102,7 @@ class HashTable<Key, Value>(capacity: Int = 10) {
             val entry = table[position]
             if (entry != null && entry.key == key) {
                 table[position] = null
+                modCount++
                 size--
                 return entry.value
             }
@@ -94,33 +115,14 @@ class HashTable<Key, Value>(capacity: Int = 10) {
 
     fun clear() {
         size = 0
+        modCount++
         for (position in 0..<table.size) {
             table[position] = null
         }
     }
 
-    private fun hash(key: Key): Int =
-        abs(key.hashCode())
-
-    private fun grow() {
-        val oldTable = table
-        val newTable = arrayOfNulls<Entry>(oldTable.size * 2)
-        for (entry in oldTable) {
-            if (entry == null) {
-                continue
-            }
-            var position = hash(entry.key) % newTable.size
-            while (true) {
-                val newEntry = newTable[position]
-                if (newEntry == null || newEntry.key == entry.key) {
-                    break
-                }
-                position = (position + 1) % newTable.size
-            }
-            newTable[position] = entry
-        }
-        table = newTable
-    }
+    override fun iterator(): Iterator<Entry<Key, Value>> =
+        EntryIterator()
 
     override fun toString(): String =
         buildString {
@@ -138,19 +140,74 @@ class HashTable<Key, Value>(capacity: Int = 10) {
             append(']')
         }
 
-    private var table: Array<Entry?>
+    private fun hash(key: Key): Int =
+        abs(key.hashCode())
+
+    private fun grow() {
+        modCount++
+        val oldTable = table
+        val newTable = arrayOfNulls<Entry<Key, Value>>(oldTable.size * 2)
+        for (entry in oldTable) {
+            if (entry == null) {
+                continue
+            }
+            var position = hash(entry.key) % newTable.size
+            while (true) {
+                val newEntry = newTable[position]
+                if (newEntry == null || newEntry.key == entry.key) {
+                    break
+                }
+                position = (position + 1) % newTable.size
+            }
+            newTable[position] = entry
+        }
+        table = newTable
+    }
+
+    private var table: Array<Entry<Key, Value>?>
+    private var modCount: Int = 0
 
     init {
         require(capacity > 0) { "Capacity must be greater than zero" }
         table = arrayOfNulls(capacity)
     }
 
-    private inner class Entry(
-        val key: Key,
-        var value: Value,
-    ) {
+    private inner class EntryIterator: Iterator<Entry<Key, Value>> {
 
-        override fun toString(): String =
-            "(key=$key,value=$value)"
+        override fun next(): Entry<Key, Value> {
+            if (modCount != this@HashTable.modCount) {
+                throw ConcurrentModificationException()
+            }
+            while (true) {
+                if (currentIndex >= table.size) {
+                    throw NoSuchElementException()
+                }
+                val entry = table[currentIndex]
+                currentIndex++
+                if (entry == null) {
+                    continue
+                }
+                return entry
+            }
+        }
+
+        override fun hasNext(): Boolean {
+            if (modCount != this@HashTable.modCount) {
+                throw ConcurrentModificationException()
+            }
+            if (currentIndex >= table.size) {
+                return false
+            }
+            while (table[currentIndex] == null) {
+                currentIndex++
+                if (currentIndex == table.size) {
+                    return false
+                }
+            }
+            return true
+        }
+
+        private var currentIndex: Int = 0
+        private val modCount: Int = this@HashTable.modCount
     }
 }
