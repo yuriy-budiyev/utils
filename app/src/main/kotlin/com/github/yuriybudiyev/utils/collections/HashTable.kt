@@ -26,7 +26,10 @@ package com.github.yuriybudiyev.utils.collections
 
 import kotlin.math.abs
 
-class HashTable<Key: Any, Value: Any>(capacity: Int = 16): Iterable<HashTable.Entry<Key, Value>> {
+class HashTable<Key: Any, Value: Any>(
+    capacity: Int = 16,
+    loadFactor: Float = 0.75F,
+): Iterable<HashTable.Entry<Key, Value>> {
 
     class Entry<Key, Value>(
         val key: Key,
@@ -67,7 +70,7 @@ class HashTable<Key: Any, Value: Any>(capacity: Int = 16): Iterable<HashTable.En
                 return
             }
             position = (position + 1) % table.size
-            if (position == initialPosition) {
+            if (position == initialPosition || size.toFloat() / table.size.toFloat() > loadFactor) {
                 grow()
                 position = hash % table.size
             }
@@ -165,11 +168,14 @@ class HashTable<Key: Any, Value: Any>(capacity: Int = 16): Iterable<HashTable.En
     }
 
     private var table: Array<Entry<Key, Value>?>
+    private val loadFactor: Float
     private var modCount: Int = 0
 
     init {
         require(capacity > 0) { "Capacity must be greater than zero" }
-        table = arrayOfNulls(capacity)
+        require(loadFactor in 0.5F..1F) { "Load factor must be between 0.5 and 1" }
+        this.table = arrayOfNulls(capacity)
+        this.loadFactor = loadFactor
     }
 
     private inner class EntryIterator: Iterator<Entry<Key, Value>> {
