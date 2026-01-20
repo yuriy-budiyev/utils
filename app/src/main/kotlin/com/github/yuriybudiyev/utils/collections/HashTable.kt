@@ -27,7 +27,7 @@ package com.github.yuriybudiyev.utils.collections
 import kotlin.math.abs
 
 class HashTable<Key: Any, Value: Any>(
-    capacity: Int = 16,
+    capacity: Int = 10,
     loadFactor: Float = 0.75F,
 ): Iterable<HashTable.Entry<Key, Value>> {
 
