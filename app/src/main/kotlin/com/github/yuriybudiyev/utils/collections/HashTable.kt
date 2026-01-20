@@ -26,7 +26,7 @@ package com.github.yuriybudiyev.utils.collections
 
 import kotlin.math.abs
 
-class HashTable<Key, Value>(capacity: Int = 16): Iterable<HashTable.Entry<Key, Value>> {
+class HashTable<Key: Any, Value: Any>(capacity: Int = 16): Iterable<HashTable.Entry<Key, Value>> {
 
     class Entry<Key, Value>(
         val key: Key,
