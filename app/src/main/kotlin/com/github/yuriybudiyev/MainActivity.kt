@@ -69,9 +69,9 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                     startToStart = contentView.id
                     topToTop = contentView.id
                     endToEnd = contentView.id
-                    topMargin = convertDpToPx(12.0F)
-                    marginStart = convertDpToPx(16.0F)
-                    marginEnd = convertDpToPx(16.0F)
+                    topMargin = convertDpToPx(12.0f)
+                    marginStart = convertDpToPx(16.0f)
+                    marginEnd = convertDpToPx(16.0f)
                 })
         setContentView(
             contentView,
