@@ -98,6 +98,9 @@ class HashTable<Key: Any, Value: Any>(
         }
     }
 
+    operator fun contains(key: Key): Boolean =
+        get(key) != null
+
     fun remove(key: Key): Value? {
         val initialPosition = hash(key) % table.size
         var position = initialPosition
