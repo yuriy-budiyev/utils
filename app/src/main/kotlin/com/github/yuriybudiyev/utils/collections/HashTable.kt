@@ -31,20 +31,10 @@ class HashTable<Key: Any, Value: Any>(
     loadFactor: Float = 0.75F,
 ): Iterable<HashTable.Entry<Key, Value>> {
 
-    class Entry<Key, Value>(
+    data class Entry<Key, Value>(
         val key: Key,
         val value: Value,
-    ) {
-
-        operator fun component1(): Key =
-            key
-
-        operator fun component2(): Value =
-            value
-
-        override fun toString(): String =
-            "(key=$key,value=$value)"
-    }
+    )
 
     var size: Int = 0
         private set
