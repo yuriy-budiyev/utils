@@ -33,7 +33,7 @@ fun Context.convertDpToPx(dp: Float): Int =
         .applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             dp,
-            resources.displayMetrics
+            resources.displayMetrics,
         )
         .roundToInt()
 
@@ -42,87 +42,87 @@ fun buildOldItems(): List<TextItem> =
         TextItem(
             id = 0,
             text = "P",
-            isChecked = false
+            isChecked = false,
         ),
         TextItem(
             id = 1,
             text = "A",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 2,
             text = "B",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 3,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 4,
             text = "X",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 5,
             text = "B",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 6,
             text = "Z",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 7,
             text = "T",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 8,
             text = "Z",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 10,
             text = "G",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 11,
             text = "H",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 12,
             text = "I",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 9,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 13,
             text = "B",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 14,
             text = "G",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 15,
             text = "L",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 16,
             text = "L",
-            isChecked = true
+            isChecked = true,
         ),
     )
 
@@ -131,76 +131,76 @@ fun buildNewItems(): List<TextItem> =
         TextItem(
             id = 0,
             text = "P",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 11,
             text = "A",
-            isChecked = false
+            isChecked = false,
         ),
         TextItem(
             id = 14,
             text = "A",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 15,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 16,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 4,
             text = "X",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 5,
             text = "Z",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 6,
             text = "E",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 10,
             text = "G",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 7,
             text = "T",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 8,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 9,
             text = "C",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 13,
             text = "B",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 1,
             text = "L",
-            isChecked = true
+            isChecked = true,
         ),
         TextItem(
             id = 2,
             text = "M",
-            isChecked = true
+            isChecked = true,
         ),
     )

@@ -45,7 +45,7 @@ class WorkerExecutor(): ScheduledThreadPoolExecutor(
         .getRuntime()
         .availableProcessors(),
     WorkerThreadFactory,
-    WorkerTaskRejectedExecutionHandler
+    WorkerTaskRejectedExecutionHandler,
 ) {
 
     override fun afterExecute(
@@ -74,7 +74,7 @@ class WorkerExecutor(): ScheduledThreadPoolExecutor(
         override fun newThread(r: Runnable): Thread =
             WorkerThread(
                 r,
-                "worker-${counter.getAndIncrement()}"
+                "worker-${counter.getAndIncrement()}",
             )
 
         private val counter: AtomicLong = AtomicLong(1)
@@ -84,7 +84,7 @@ class WorkerExecutor(): ScheduledThreadPoolExecutor(
             name: String,
         ): Thread(
             target,
-            name
+            name,
         ) {
 
             override fun run() {

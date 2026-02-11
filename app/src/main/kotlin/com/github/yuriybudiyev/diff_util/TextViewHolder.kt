@@ -68,7 +68,7 @@ class TextViewHolder(
     init {
         contentView.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.WRAP_CONTENT,
         )
         contentView.background = colors.background.toDrawable()
         contentView.orientation = LinearLayout.HORIZONTAL
@@ -83,12 +83,12 @@ class TextViewHolder(
         textView.setTypeface(
             Typeface.create(
                 "sans-serif",
-                Typeface.NORMAL
-            )
+                Typeface.NORMAL,
+            ),
         )
         textView.setTextSize(
             TypedValue.COMPLEX_UNIT_SP,
-            16F
+            16F,
         )
         textView.setTextColor(colors.onBackground)
         contentView.addView(
@@ -96,8 +96,8 @@ class TextViewHolder(
             LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                1F
-            )
+                1F,
+            ),
         )
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             item?.isChecked = isChecked
@@ -108,7 +108,7 @@ class TextViewHolder(
             LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-            )
+            ),
         )
     }
 }

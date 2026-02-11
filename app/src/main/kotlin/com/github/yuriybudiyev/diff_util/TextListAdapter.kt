@@ -41,7 +41,7 @@ class TextListAdapter(
     ): TextViewHolder =
         TextViewHolder(
             context = context,
-            colors = colors
+            colors = colors,
         )
 
     override fun getItemCount(): Int =
@@ -56,12 +56,12 @@ class TextListAdapter(
         if (payload != null) {
             holder.bind(
                 item = items[position],
-                payload = payload
+                payload = payload,
             )
         } else {
             onBindViewHolder(
                 holder = holder,
-                position = position
+                position = position,
             )
         }
     }

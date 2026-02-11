@@ -43,12 +43,12 @@ abstract class EdgeToEdgeWithSystemBarsInsetsActivity: AppCompatActivity() {
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.auto(
                 lightScrim = Color.TRANSPARENT,
-                darkScrim = Color.TRANSPARENT
+                darkScrim = Color.TRANSPARENT,
             ),
             navigationBarStyle = SystemBarStyle.auto(
                 lightScrim = Color.TRANSPARENT,
-                darkScrim = Color.TRANSPARENT
-            )
+                darkScrim = Color.TRANSPARENT,
+            ),
         )
         super.onCreate(savedInstanceState)
         val androidContentView = findViewById<View>(android.R.id.content)

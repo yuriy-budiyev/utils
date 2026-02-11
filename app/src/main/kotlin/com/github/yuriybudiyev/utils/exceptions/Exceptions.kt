@@ -40,7 +40,7 @@ fun Throwable.writeStackTraceTo(
         caption1 = null,
         caption2 = null,
         separator = separator,
-        written = Collections.newSetFromMap(IdentityHashMap())
+        written = Collections.newSetFromMap(IdentityHashMap()),
     )
 }
 
@@ -84,7 +84,7 @@ private fun writeStackTrace(
             "Suppressed: ",
             element.toString(),
             separator,
-            written
+            written,
         )
     }
     val cause = throwable.cause
@@ -95,7 +95,7 @@ private fun writeStackTrace(
             "Caused by: ",
             cause.toString(),
             separator,
-            written
+            written,
         )
     }
 }

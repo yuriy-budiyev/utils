@@ -37,8 +37,8 @@ fun <E> MutableList<E>.swap(
         index = first,
         element = set(
             index = second,
-            element = get(first)
-        )
+            element = get(first),
+        ),
     )
 }
 
@@ -107,7 +107,7 @@ fun <E> arrayListOfNulls(size: Int): ArrayList<E?> {
 fun <K, V> hashMapWithExpectedSize(expectedSize: Int): HashMap<K, V> =
     HashMap(
         mapCapacityForExpectedSize(expectedSize),
-        LOAD_FACTOR
+        LOAD_FACTOR,
     )
 
 /**
@@ -121,7 +121,7 @@ fun <K, V> linkedHashMapWithExpectedSize(
     LinkedHashMap(
         mapCapacityForExpectedSize(expectedSize),
         LOAD_FACTOR,
-        accessOrder
+        accessOrder,
     )
 
 /**
@@ -130,7 +130,7 @@ fun <K, V> linkedHashMapWithExpectedSize(
 fun <E> hashSetWithExpectedSize(expectedSize: Int): HashSet<E> =
     HashSet(
         mapCapacityForExpectedSize(expectedSize),
-        LOAD_FACTOR
+        LOAD_FACTOR,
     )
 
 /**
@@ -139,7 +139,7 @@ fun <E> hashSetWithExpectedSize(expectedSize: Int): HashSet<E> =
 fun <E> linkedHashSetWithExpectedSize(expectedSize: Int): LinkedHashSet<E> =
     LinkedHashSet(
         mapCapacityForExpectedSize(expectedSize),
-        LOAD_FACTOR
+        LOAD_FACTOR,
     )
 
 /**
@@ -186,7 +186,7 @@ inline fun <K, V, D: MutableMap<K, V>> Iterable<V>.associateByNotNullTo(
 ): D =
     associateByNotNullTo(
         destination,
-        keySelector
+        keySelector,
     ) { it }
 
 /**
@@ -207,7 +207,7 @@ inline fun <K, V, R> Iterable<V>.associateByNotNull(
     associateByNotNullTo(
         LinkedHashMap(),
         keySelector,
-        valueTransform
+        valueTransform,
     )
 
 /**
@@ -268,7 +268,7 @@ inline fun <K, V, R> Sequence<V>.associateByNotNull(
     associateByNotNullTo(
         LinkedHashMap(),
         keySelector,
-        valueTransform
+        valueTransform,
     )
 
 /**
@@ -309,7 +309,7 @@ inline fun <K, V, R, D: MutableMap<K, R>> Sequence<V>.associateByNotNullTo(
 inline fun <K, V> Iterable<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, List<V>> =
     groupByNotNull(
         keySelector = keySelector,
-        valueTransform = { it }
+        valueTransform = { it },
     )
 
 /**
@@ -326,7 +326,7 @@ inline fun <K, V, D: MutableMap<K, MutableList<V>>> Iterable<V>.groupByNotNullTo
     groupByNotNullTo(
         destination = destination,
         keySelector = keySelector,
-        valueTransform = { it }
+        valueTransform = { it },
     )
 
 /**
@@ -345,7 +345,7 @@ inline fun <K, V, R> Iterable<V>.groupByNotNull(
     groupByNotNullTo(
         destination = LinkedHashMap(),
         keySelector = keySelector,
-        valueTransform = valueTransform
+        valueTransform = valueTransform,
     )
 
 /**
@@ -384,7 +384,7 @@ inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Iterable<V>.groupByNotNul
 inline fun <K, V> Sequence<V>.groupByNotNull(keySelector: (V) -> K?): Map<K, List<V>> =
     groupByNotNull(
         keySelector = keySelector,
-        valueTransform = { it }
+        valueTransform = { it },
     )
 
 /**
@@ -401,7 +401,7 @@ inline fun <K, V, D: MutableMap<K, MutableList<V>>> Sequence<V>.groupByNotNullTo
     groupByNotNullTo(
         destination = destination,
         keySelector = keySelector,
-        valueTransform = { it }
+        valueTransform = { it },
     )
 
 /**
@@ -420,7 +420,7 @@ inline fun <K, V, R> Sequence<V>.groupByNotNull(
     groupByNotNullTo(
         destination = LinkedHashMap(),
         keySelector = keySelector,
-        valueTransform = valueTransform
+        valueTransform = valueTransform,
     )
 
 /**
@@ -456,7 +456,7 @@ inline fun <K, V, R, D: MutableMap<K, MutableList<R>>> Sequence<V>.groupByNotNul
 inline fun <E, V> Iterable<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
     toCollectionNotNull(
         destination = LinkedHashSet(),
-        valueTransform = valueTransform
+        valueTransform = valueTransform,
     )
 
 /**
@@ -468,7 +468,7 @@ inline fun <E, V> Iterable<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
 inline fun <E, V> Sequence<E>.toSetNotNull(valueTransform: (E) -> V?): Set<V> =
     toCollectionNotNull(
         destination = LinkedHashSet(),
-        valueTransform = valueTransform
+        valueTransform = valueTransform,
     )
 
 /**

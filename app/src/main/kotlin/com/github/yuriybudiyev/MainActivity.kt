@@ -54,8 +54,8 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
             startActivity(
                 Intent(
                     this,
-                    DiffUtilActivity::class.java
-                )
+                    DiffUtilActivity::class.java,
+                ),
             )
         }
         contentView.addView(
@@ -63,7 +63,7 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
             ConstraintLayout
                 .LayoutParams(
                     ConstraintLayout.LayoutParams.MATCH_CONSTRAINT,
-                    ConstraintLayout.LayoutParams.WRAP_CONTENT
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
                 )
                 .apply {
                     startToStart = contentView.id
@@ -72,13 +72,14 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                     topMargin = convertDpToPx(12.0f)
                     marginStart = convertDpToPx(16.0f)
                     marginEnd = convertDpToPx(16.0f)
-                })
+                },
+        )
         setContentView(
             contentView,
             ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
+                ViewGroup.LayoutParams.MATCH_PARENT,
+            ),
         )
     }
 }

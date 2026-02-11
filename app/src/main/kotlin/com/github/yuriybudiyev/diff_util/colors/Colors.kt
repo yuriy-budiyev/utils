@@ -65,7 +65,7 @@ fun Context.getColors(): Colors =
             buttonBackground = Color.WHITE,
             buttonBackgroundPressed = Color.BLACK,
             onButtonBackground = Color.BLACK,
-            separator = Color.WHITE
+            separator = Color.WHITE,
         )
         else -> Colors(
             background = Color.WHITE,
@@ -73,7 +73,7 @@ fun Context.getColors(): Colors =
             buttonBackground = Color.BLACK,
             buttonBackgroundPressed = Color.WHITE,
             onButtonBackground = Color.WHITE,
-            separator = Color.BLACK
+            separator = Color.BLACK,
         )
     }
 
@@ -81,12 +81,12 @@ fun buildButtonColorStateList(colors: Colors): ColorStateList =
     ColorStateList(
         arrayOf(
             intArrayOf(-android.R.attr.state_pressed),
-            intArrayOf(android.R.attr.state_pressed)
+            intArrayOf(android.R.attr.state_pressed),
         ),
         intArrayOf(
             colors.buttonBackground,
             colors.buttonBackgroundPressed,
-        )
+        ),
     )
 
 @ColorInt
@@ -95,13 +95,13 @@ fun applyAlpha(
     color: Int,
     @FloatRange(
         from = 0.0,
-        to = 1.0
+        to = 1.0,
     )
     alpha: Float,
 ): Int =
     applyAlpha(
         color,
-        (255 * alpha).roundToInt()
+        (255 * alpha).roundToInt(),
     )
 
 @ColorInt
@@ -110,7 +110,7 @@ fun applyAlpha(
     color: Int,
     @IntRange(
         from = 0,
-        to = 255
+        to = 255,
     )
     alpha: Int,
 ): Int =
@@ -118,7 +118,7 @@ fun applyAlpha(
         alpha,
         Color.red(color),
         Color.green(color),
-        Color.blue(color)
+        Color.blue(color),
     )
 
 data class Colors(

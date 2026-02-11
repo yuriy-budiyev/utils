@@ -37,14 +37,14 @@ fun Context.toggleComponent(
     appContext.packageManager.setComponentEnabledSetting(
         ComponentName(
             appContext,
-            componentClass.java
+            componentClass.java,
         ),
         if (enabled) {
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED
         } else {
             PackageManager.COMPONENT_ENABLED_STATE_DISABLED
         },
-        PackageManager.DONT_KILL_APP
+        PackageManager.DONT_KILL_APP,
     )
 }
 
@@ -52,7 +52,7 @@ fun Context.checkPackageAvailable(packageName: String): Boolean {
     try {
         packageManager.getPackageInfo(
             packageName,
-            PackageManager.GET_META_DATA
+            PackageManager.GET_META_DATA,
         )
         return true
     } catch (_: PackageManager.NameNotFoundException) {

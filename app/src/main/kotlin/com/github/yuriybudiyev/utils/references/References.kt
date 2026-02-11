@@ -51,7 +51,7 @@ import java.lang.ref.WeakReference
 fun <T> T.asSoftReference(queue: ReferenceQueue<T>? = null): SoftReference<T> =
     SoftReference(
         this,
-        queue
+        queue,
     )
 
 /**
@@ -76,7 +76,7 @@ fun <T> T.asSoftReference(queue: ReferenceQueue<T>? = null): SoftReference<T> =
 fun <T> T.asWeakReference(queue: ReferenceQueue<T>? = null): WeakReference<T> =
     WeakReference(
         this,
-        queue
+        queue,
     )
 
 /**
@@ -101,5 +101,5 @@ fun <T> T.asWeakReference(queue: ReferenceQueue<T>? = null): WeakReference<T> =
 fun <T> T.asPhantomReference(queue: ReferenceQueue<T>): PhantomReference<T> =
     PhantomReference(
         this,
-        queue
+        queue,
     )

@@ -51,29 +51,31 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
             contentView,
             ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
+                ViewGroup.LayoutParams.MATCH_PARENT,
+            ),
         )
         contentView.addView(
             recyclerView,
             FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-            )
+                FrameLayout.LayoutParams.MATCH_PARENT,
+            ),
         )
         recyclerView.layoutManager = LinearLayoutManager(
             this,
             RecyclerView.VERTICAL,
-            false
+            false,
         )
         val decoration = DividerItemDecoration(
             this,
-            RecyclerView.VERTICAL
+            RecyclerView.VERTICAL,
         )
-        decoration.setDrawable(ShapeDrawable(RectShape()).apply {
-            paint.color = colors.separator
-            intrinsicHeight = convertDpToPx(1.0F).coerceAtLeast(1)
-        })
+        decoration.setDrawable(
+            ShapeDrawable(RectShape()).apply {
+                paint.color = colors.separator
+                intrinsicHeight = convertDpToPx(1.0F).coerceAtLeast(1)
+            },
+        )
         recyclerView.addItemDecoration(decoration)
         val oldItems = buildOldItems()
         val newItems = buildNewItems()
@@ -81,7 +83,7 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
         val adapter = TextListAdapter(
             this,
             colors,
-            oldItems
+            oldItems,
         )
         recyclerView.adapter = adapter
         val changeButton = FloatingActionButton(this)
@@ -94,12 +96,12 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                 .LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT,
-                    Gravity.BOTTOM or Gravity.END
+                    Gravity.BOTTOM or Gravity.END,
                 )
                 .apply {
                     marginEnd = convertDpToPx(16.0F)
                     bottomMargin = convertDpToPx(16.0F)
-                }
+                },
         )
         changeButton.setOnClickListener {
             val items = if (oldItemsDisplayed) {
@@ -112,8 +114,8 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
             val diffResult = DiffUtil.calculateDiff(
                 TextListDiffCallback(
                     adapter.items,
-                    items
-                )
+                    items,
+                ),
             )
             adapter.items = items
             diffResult.dispatchUpdatesTo(adapter)
