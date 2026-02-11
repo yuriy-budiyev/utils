@@ -28,6 +28,6 @@ const val BfHelloWorld: String =
     ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
         "<.>>>++++++++++[<+++++++++>-]<---.<<<<.+++.------.--------.>>+.>++++++++++."
 
-fun runBrainfuck(code: String) {
-    //TODO
+fun runBrainfuck(code: String): String {
+    TODO()
 }
