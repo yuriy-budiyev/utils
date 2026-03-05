@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.1"
+agp = "9.1.0"
 kotlin = "2.3.10"
 kotlin-coroutines = "1.10.2"
 desugar = "2.1.5"
@@ -16,6 +16,7 @@ androidx-constraintlayout = "2.2.1"
 android-application = { id = "com.android.application", version.ref = "agp" }
 
 [libraries]
+kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 kotlin-stdlib-jdk7 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
 kotlin-stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }

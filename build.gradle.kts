@@ -4,6 +4,6 @@ plugins {
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.asProvider().get()}")
+        classpath(libs.kotlin.plugin)
     }
 }
