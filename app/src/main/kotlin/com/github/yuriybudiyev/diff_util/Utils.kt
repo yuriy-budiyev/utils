@@ -28,14 +28,16 @@ import android.content.Context
 import android.util.TypedValue
 import kotlin.math.roundToInt
 
-fun Context.convertDpToPx(dp: Float): Int =
-    TypedValue
-        .applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            resources.displayMetrics,
-        )
-        .roundToInt()
+context(context: Context)
+inline val Number.dp: Int // Inline to bypass auto pack/unpack
+    get() =
+        TypedValue
+            .applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                this.toFloat(),
+                context.resources.displayMetrics,
+            )
+            .roundToInt()
 
 fun buildOldItems(): List<TextItem> =
     listOf(

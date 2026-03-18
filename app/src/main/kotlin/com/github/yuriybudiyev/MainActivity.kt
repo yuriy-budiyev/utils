@@ -34,7 +34,7 @@ import com.github.yuriybudiyev.core.EdgeToEdgeWithSystemBarsInsetsActivity
 import com.github.yuriybudiyev.diff_util.DiffUtilActivity
 import com.github.yuriybudiyev.diff_util.colors.buildButtonColorStateList
 import com.github.yuriybudiyev.diff_util.colors.getColors
-import com.github.yuriybudiyev.diff_util.convertDpToPx
+import com.github.yuriybudiyev.diff_util.dp
 import com.github.yuriybudiyev.utils.R
 
 class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
@@ -69,9 +69,9 @@ class MainActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                     startToStart = contentView.id
                     topToTop = contentView.id
                     endToEnd = contentView.id
-                    topMargin = convertDpToPx(12.0f)
-                    marginStart = convertDpToPx(16.0f)
-                    marginEnd = convertDpToPx(16.0f)
+                    topMargin = 12.dp
+                    marginStart = 16.dp
+                    marginEnd = 16.dp
                 },
         )
         setContentView(
