@@ -73,7 +73,7 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
         decoration.setDrawable(
             ShapeDrawable(RectShape()).apply {
                 paint.color = colors.separator
-                intrinsicHeight = convertDpToPx(1.0F).coerceAtLeast(1)
+                intrinsicHeight = 1.dp.coerceAtLeast(1)
             },
         )
         recyclerView.addItemDecoration(decoration)
@@ -99,8 +99,8 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
                     Gravity.BOTTOM or Gravity.END,
                 )
                 .apply {
-                    marginEnd = convertDpToPx(16.0F)
-                    bottomMargin = convertDpToPx(16.0F)
+                    marginEnd = 16.dp
+                    bottomMargin = 16.dp
                 },
         )
         changeButton.setOnClickListener {

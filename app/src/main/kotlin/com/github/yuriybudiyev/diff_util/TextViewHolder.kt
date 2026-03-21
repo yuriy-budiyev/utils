@@ -74,10 +74,10 @@ class TextViewHolder(
         contentView.orientation = LinearLayout.HORIZONTAL
         with(context) {
             contentView.setPaddingRelative(
-                convertDpToPx(16.0F),
-                convertDpToPx(12.0F),
-                convertDpToPx(16.0F),
-                convertDpToPx(12.0F),
+                16.dp,
+                12.dp,
+                16.dp,
+                12.dp,
             )
         }
         textView.setTypeface(
