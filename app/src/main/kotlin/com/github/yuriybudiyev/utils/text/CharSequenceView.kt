@@ -58,6 +58,6 @@ class CharSequenceView(
 
     override fun toString(): String =
         buildString(length) {
-            append(this)
+            append(this@CharSequenceView)
         }
 }
