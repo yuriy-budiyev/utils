@@ -34,7 +34,7 @@ class CharSequenceView(
         get() = endIndex - startIndex
 
     override fun get(index: Int): Char {
-        if (index >= length) {
+        if (index !in 0..<length) {
             throw IndexOutOfBoundsException()
         }
         return charSequence[startIndex + index]
