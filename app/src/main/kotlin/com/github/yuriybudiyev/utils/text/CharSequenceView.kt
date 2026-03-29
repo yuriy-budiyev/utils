@@ -27,14 +27,13 @@ package com.github.yuriybudiyev.utils.text
 class CharSequenceView(
     private val charSequence: CharSequence,
     private val startIndex: Int,
-    private val endIndex: Int,
+    endIndex: Int,
 ): CharSequence {
 
-    override val length: Int
-        get() = endIndex - startIndex
+    override val length: Int = endIndex - startIndex
 
     override fun get(index: Int): Char {
-        if (index !in 0..<length) {
+        if (index < 0 || index >= length) {
             throw IndexOutOfBoundsException()
         }
         return charSequence[startIndex + index]
