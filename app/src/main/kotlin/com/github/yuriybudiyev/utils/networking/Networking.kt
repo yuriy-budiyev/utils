@@ -29,7 +29,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.annotation.RequiresPermission
-import com.github.yuriybudiyev.utils.networking.transport.TransportType
 
 /**
  * Returns `true` if active network uses given [transportType]
@@ -53,4 +52,14 @@ fun Context.isConnectedToInternet(transportType: TransportType = TransportType.A
                 && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
         }
     }
+}
+
+/**
+ * Network transport type.
+ */
+enum class TransportType {
+
+    Any,
+    Cellular,
+    WiFi,
 }
