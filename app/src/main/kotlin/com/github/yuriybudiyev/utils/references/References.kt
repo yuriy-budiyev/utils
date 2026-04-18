@@ -98,7 +98,7 @@ fun <T> T.asWeakReference(queue: ReferenceQueue<T>? = null): WeakReference<T> =
  * - Finally, an object is unreachable, and therefore eligible for reclamation, when it is not
  *   reachable in any of the above ways.
  */
-fun <T> T.asPhantomReference(queue: ReferenceQueue<T>): PhantomReference<T> =
+fun <T> T.asPhantomReference(queue: ReferenceQueue<T>? = null): PhantomReference<T> =
     PhantomReference(
         this,
         queue,
