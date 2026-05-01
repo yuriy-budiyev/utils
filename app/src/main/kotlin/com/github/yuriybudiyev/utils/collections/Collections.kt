@@ -98,7 +98,7 @@ inline fun <reified T: Any> List<*>.lastInstanceOf(): T {
 
 /**
  * Returns first element that is instance of [T] from this collection,
- * or null if there are no elements of type [T].
+ * or `null` if there are no elements of type [T].
  */
 inline fun <reified T: Any> Iterable<*>.firstInstanceOfOrNull(): T? {
     for (item in this) {
@@ -111,7 +111,7 @@ inline fun <reified T: Any> Iterable<*>.firstInstanceOfOrNull(): T? {
 
 /**
  * Returns last element that is instance of [T] from this collection,
- * or null if there are no elements of type [T].
+ * or `null` if there are no elements of type [T].
  */
 inline fun <reified T: Any> List<*>.lastInstanceOfOrNull(): T? {
     val iterator = listIterator(size)
