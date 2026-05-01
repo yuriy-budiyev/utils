@@ -43,7 +43,7 @@ fun <E> MutableList<E>.swap(
 }
 
 /**
- * Removes first element matching the given [predicate] from this collection
+ * Removes first element matching the given [predicate] from this collection.
  */
 inline fun <E> MutableIterable<E>.removeFirst(predicate: (element: E) -> Boolean) {
     val iterator = iterator()
@@ -53,6 +53,75 @@ inline fun <E> MutableIterable<E>.removeFirst(predicate: (element: E) -> Boolean
             break
         }
     }
+}
+
+/**
+ * Removes last element matching the given [predicate] from this collection.
+ */
+inline fun <E> MutableList<E>.removeLast(predicate: (element: E) -> Boolean) {
+    val iterator = listIterator(size)
+    while (iterator.hasPrevious()) {
+        if (predicate(iterator.previous())) {
+            iterator.remove()
+            break
+        }
+    }
+}
+
+/**
+ * Returns first element that is instance of [T] from this collection,
+ * or throws [NoSuchElementException] if there are no elements of type [T].
+ */
+inline fun <reified T: Any> Iterable<*>.firstInstanceOf(): T {
+    for (item in this) {
+        if (item is T) {
+            return item
+        }
+    }
+    throw NoSuchElementException("Collection contains no elements of type ${T::class.qualifiedName}.")
+}
+
+/**
+ * Returns last element that is instance of [T] from this collection,
+ * or throws [NoSuchElementException] if there are no elements of type [T].
+ */
+inline fun <reified T: Any> List<*>.lastInstanceOf(): T {
+    val iterator = listIterator(size)
+    while (iterator.hasPrevious()) {
+        val item = iterator.previous()
+        if (item is T) {
+            return item
+        }
+    }
+    throw NoSuchElementException("Collection contains no elements of type ${T::class.qualifiedName}.")
+}
+
+/**
+ * Returns first element that is instance of [T] from this collection,
+ * or null if there are no elements of type [T].
+ */
+inline fun <reified T: Any> Iterable<*>.firstInstanceOfOrNull(): T? {
+    for (item in this) {
+        if (item is T) {
+            return item
+        }
+    }
+    return null
+}
+
+/**
+ * Returns last element that is instance of [T] from this collection,
+ * or null if there are no elements of type [T].
+ */
+inline fun <reified T: Any> List<*>.lastInstanceOfOrNull(): T? {
+    val iterator = listIterator(size)
+    while (iterator.hasPrevious()) {
+        val item = iterator.previous()
+        if (item is T) {
+            return item
+        }
+    }
+    return null
 }
 
 /**
