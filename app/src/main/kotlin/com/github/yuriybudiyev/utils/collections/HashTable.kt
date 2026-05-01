@@ -47,10 +47,7 @@ class HashTable<Key: Any, Value: Any>(
         val initialPosition = hash % table.size
         var position = initialPosition
         while (true) {
-            val entry = table[position]
-            if (entry == null) {
-                break
-            }
+            val entry = table[position] ?: break
             if (entry.key == key) {
                 modCount++
                 table[position] = Entry(
