@@ -161,7 +161,7 @@ private const val INT_MAX_POWER_OF_TWO: Int = 1 shl (Int.SIZE_BITS - 2)
  * Returns a [Map] containing the elements from the [this] collection indexed by the key
  * returned from [keySelector] function applied to each element.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * The returned map preserves the entry iteration order of the original collection.
@@ -175,7 +175,7 @@ inline fun <K, V> Iterable<V>.associateByNotNull(keySelector: (V) -> K?): Map<K,
  * Populates and returns the [destination] mutable map with elements from [this]
  * collection indexed by the key returned from [keySelector] function applied to each element.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * Null keys are skipped.
@@ -193,7 +193,7 @@ inline fun <K, V, D: MutableMap<K, V>> Iterable<V>.associateByNotNullTo(
  * Returns a [Map] containing the values provided by [valueTransform] and indexed
  * by [keySelector] function applied to elements of the [this] collection.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * The returned map preserves the entry iteration order of the original collection.
@@ -214,7 +214,7 @@ inline fun <K, V, R> Iterable<V>.associateByNotNull(
  * Populates and returns the [destination] mutable map with values provided by [valueTransform]
  * and indexed by [keySelector] function applied to elements of the [this] sequence.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * Null keys and values are skipped.
@@ -240,7 +240,7 @@ inline fun <K, V, R, D: MutableMap<K, R>> Iterable<V>.associateByNotNullTo(
  * Returns a [Map] containing the elements from the [this] sequence indexed by the key
  * returned from [keySelector] function applied to each element.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * The returned map preserves the entry iteration order of the original sequence.
@@ -254,7 +254,7 @@ inline fun <K, V> Sequence<V>.associateByNotNull(keySelector: (V) -> K?): Map<K,
  * Returns a [Map] containing the values provided by [valueTransform] and indexed
  * by [keySelector] function applied to elements of the [this] sequence.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * The returned map preserves the entry iteration order of the original sequence.
@@ -275,7 +275,7 @@ inline fun <K, V, R> Sequence<V>.associateByNotNull(
  * Populates and returns the [destination] mutable map with values provided by [valueTransform]
  * and indexed by [keySelector] function applied to elements of the [this] sequence.
  *
- * If any two elements would have the same key returned by [keySelector]
+ * If any two elements have the same key returned by [keySelector]
  * the last one gets added to the map.
  *
  * Null keys and values are skipped.
