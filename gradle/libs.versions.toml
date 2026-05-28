@@ -1,6 +1,6 @@
 [versions]
 agp = "9.2.1"
-kotlin = "2.4.0-RC"
+kotlin = "2.3.21"
 kotlin-coroutines = "1.11.0"
 desugar = "2.1.5"
 androidx-annotation = "1.10.0"
