@@ -1,11 +1,11 @@
 [versions]
 agp = "9.2.1"
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 kotlin-coroutines = "1.11.0"
 desugar = "2.1.5"
 androidx-annotation = "1.10.0"
 androidx-annotation-experimental = "1.6.0"
-androidx-core = "1.18.0"
+androidx-core = "1.19.0"
 androidx-recyclerview = "1.4.0"
 androidx-appcompat = "1.7.1"
 androidx-fragment = "1.8.9"
