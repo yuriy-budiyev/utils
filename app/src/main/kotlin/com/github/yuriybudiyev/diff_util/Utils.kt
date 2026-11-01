@@ -29,7 +29,7 @@ import android.util.TypedValue
 import kotlin.math.roundToInt
 
 context(context: Context)
-inline val Number.dp: Int // Inline to bypass auto pack/unpack
+inline val Number.dp: Int // Inline to bypass auto box/unbox
     get() =
         TypedValue
             .applyDimension(

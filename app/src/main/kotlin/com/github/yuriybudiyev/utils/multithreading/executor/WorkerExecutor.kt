@@ -29,11 +29,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import java.util.concurrent.CancellationException
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
-import java.util.concurrent.RejectedExecutionException
-import java.util.concurrent.RejectedExecutionHandler
 import java.util.concurrent.ScheduledThreadPoolExecutor
 import java.util.concurrent.ThreadFactory
-import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.atomic.AtomicLong
 
 /**
@@ -41,17 +38,12 @@ import java.util.concurrent.atomic.AtomicLong
  * thread priority, can be used as [CoroutineDispatcher].
  */
 class WorkerExecutor: ScheduledThreadPoolExecutor(
-    Runtime
-        .getRuntime()
-        .availableProcessors(),
+    Runtime.getRuntime().availableProcessors(),
     WorkerThreadFactory,
-    WorkerTaskRejectedExecutionHandler,
+    AbortPolicy(),
 ) {
 
-    override fun afterExecute(
-        r: Runnable,
-        t: Throwable?,
-    ) {
+    override fun afterExecute(r: Runnable, t: Throwable?) {
         if (t == null && r is Future<*> && r.isDone) {
             try {
                 r.get()
@@ -72,35 +64,17 @@ class WorkerExecutor: ScheduledThreadPoolExecutor(
     private object WorkerThreadFactory: ThreadFactory {
 
         override fun newThread(r: Runnable): Thread =
-            WorkerThread(
-                r,
-                "worker-${counter.getAndIncrement()}",
-            )
+            WorkerThread(r, "worker-${counter.getAndIncrement()}")
 
-        private val counter: AtomicLong = AtomicLong(1)
+        private val counter: AtomicLong = AtomicLong(1L)
 
-        private class WorkerThread(
-            target: Runnable,
-            name: String,
-        ): Thread(
-            target,
-            name,
-        ) {
-
-            override fun run() {
-                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
-                super.run()
-            }
-        }
     }
 
-    private object WorkerTaskRejectedExecutionHandler: RejectedExecutionHandler {
+    private class WorkerThread(target: Runnable, name: String): Thread(target, name) {
 
-        override fun rejectedExecution(
-            r: Runnable,
-            e: ThreadPoolExecutor,
-        ) {
-            throw RejectedExecutionException("Task $r rejected from $e")
+        override fun run() {
+            Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
+            super.run()
         }
     }
 }

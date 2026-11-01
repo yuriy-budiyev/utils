@@ -109,7 +109,7 @@ class HashTable<Key: Any, Value: Any>(
     fun clear() {
         size = 0
         modCount++
-        for (position in 0..<table.size) {
+        for (position in table.indices) {
             table[position] = null
         }
     }

@@ -11,13 +11,13 @@ android {
 
     compileSdk {
         version = release(37) {
-            minorApiLevel = 0
+            minorApiLevel = 2
         }
     }
 
     defaultConfig {
         applicationId = "com.github.yuriybudiyev.utils"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
@@ -26,35 +26,36 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
+            optimization {
+                enable = true
+                packageScope = setOf("**")
+            }
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
         buildConfig = true
     }
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/**")
+        }
+    }
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
-        freeCompilerArgs = listOf("-XXLanguage:+ContextParameters")
+        jvmTarget = JvmTarget.JVM_17
     }
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.android.tools.desugar)
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.androidx.annotation)
     implementation(libs.bundles.androidx.core)

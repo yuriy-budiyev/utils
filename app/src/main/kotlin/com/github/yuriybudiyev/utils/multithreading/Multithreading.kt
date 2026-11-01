@@ -30,14 +30,12 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.ScheduledExecutorService
-import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KProperty
 
 /**
  * [CoroutineDispatcher] based on scheduled thread pool executor
  * with [Process.THREAD_PRIORITY_BACKGROUND] thread priority.
  */
-val Dispatchers.Worker: CoroutineDispatcher by WorkerDispatcherHolder
+val Dispatchers.Worker: CoroutineDispatcher by lazy { createWorkerCoroutineDispatcher() }
 
 /**
  * Create [CoroutineDispatcher] based on scheduled thread pool executor
@@ -52,14 +50,3 @@ fun createWorkerCoroutineDispatcher(): CoroutineDispatcher =
  */
 fun createWorkerExecutorService(): ScheduledExecutorService =
     WorkerExecutor()
-
-private object WorkerDispatcherHolder: ReadOnlyProperty<Dispatchers, CoroutineDispatcher> {
-
-    override fun getValue(
-        thisRef: Dispatchers,
-        property: KProperty<*>,
-    ): CoroutineDispatcher =
-        dispatcher
-
-    private val dispatcher: CoroutineDispatcher = createWorkerCoroutineDispatcher()
-}

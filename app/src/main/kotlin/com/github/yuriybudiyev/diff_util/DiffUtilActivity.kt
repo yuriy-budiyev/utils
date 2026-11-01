@@ -36,6 +36,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.yuriybudiyev.core.EdgeToEdgeWithSystemBarsInsetsActivity
+import com.github.yuriybudiyev.diff_util.colors.buildButtonColorStateList
 import com.github.yuriybudiyev.diff_util.colors.getColors
 import com.github.yuriybudiyev.utils.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -87,7 +88,7 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
         )
         recyclerView.adapter = adapter
         val changeButton = FloatingActionButton(this)
-        changeButton.backgroundTintList = ColorStateList.valueOf(colors.buttonBackground)
+        changeButton.backgroundTintList = buildButtonColorStateList(colors)
         changeButton.setImageResource(R.drawable.ic_refresh)
         changeButton.imageTintList = ColorStateList.valueOf(colors.onButtonBackground)
         contentView.addView(
