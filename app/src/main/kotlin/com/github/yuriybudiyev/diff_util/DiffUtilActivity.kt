@@ -40,6 +40,8 @@ import com.github.yuriybudiyev.diff_util.colors.buildButtonColorStateList
 import com.github.yuriybudiyev.diff_util.colors.getColors
 import com.github.yuriybudiyev.utils.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.shape.RelativeCornerSize
+import com.google.android.material.shape.ShapeAppearanceModel
 
 class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
 
@@ -91,6 +93,10 @@ class DiffUtilActivity: EdgeToEdgeWithSystemBarsInsetsActivity() {
         changeButton.backgroundTintList = buildButtonColorStateList(colors)
         changeButton.setImageResource(R.drawable.ic_refresh)
         changeButton.imageTintList = ColorStateList.valueOf(colors.onButtonBackground)
+        changeButton.shapeAppearanceModel =
+            ShapeAppearanceModel.Builder()
+                .setAllCornerSizes(RelativeCornerSize(0.5F))
+                .build()
         contentView.addView(
             changeButton,
             FrameLayout
