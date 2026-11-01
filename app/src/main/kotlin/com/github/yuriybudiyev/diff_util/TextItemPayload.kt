@@ -26,5 +26,5 @@ package com.github.yuriybudiyev.diff_util
 
 data class TextItemPayload(
     val isTextChanged: Boolean,
-    var isCheckedChanged: Boolean,
+    val isCheckedChanged: Boolean,
 )
