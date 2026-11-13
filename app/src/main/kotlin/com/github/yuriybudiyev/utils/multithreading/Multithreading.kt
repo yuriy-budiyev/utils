@@ -24,12 +24,12 @@
 
 package com.github.yuriybudiyev.utils.multithreading
 
-import android.os.Process
-import com.github.yuriybudiyev.utils.multithreading.executor.WorkerExecutor
+import java.util.concurrent.ScheduledExecutorService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
-import java.util.concurrent.ScheduledExecutorService
+import android.os.Process
+import com.github.yuriybudiyev.utils.multithreading.executor.WorkerExecutor
 
 /**
  * [CoroutineDispatcher] based on scheduled thread pool executor

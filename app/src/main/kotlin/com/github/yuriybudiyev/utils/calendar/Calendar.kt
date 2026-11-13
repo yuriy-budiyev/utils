@@ -80,23 +80,12 @@ fun createCalendar(
  * Set [Calendar.HOUR_OF_DAY], [Calendar.MINUTE],
  * [Calendar.SECOND] and [Calendar.MILLISECOND] values to `0`
  */
+@IgnorableReturnValue
 fun Calendar.setStartOfTheDay(): Calendar {
-    set(
-        Calendar.HOUR_OF_DAY,
-        0,
-    )
-    set(
-        Calendar.MINUTE,
-        0,
-    )
-    set(
-        Calendar.SECOND,
-        0,
-    )
-    set(
-        Calendar.MILLISECOND,
-        0,
-    )
+    set(Calendar.HOUR_OF_DAY, 0)
+    set(Calendar.MINUTE, 0)
+    set(Calendar.SECOND, 0)
+    set(Calendar.MILLISECOND, 0)
     return this
 }
 
@@ -104,23 +93,12 @@ fun Calendar.setStartOfTheDay(): Calendar {
  * Set [Calendar.HOUR_OF_DAY] to `23`, [Calendar.MINUTE] and [Calendar.SECOND] to `59`,
  * [Calendar.MILLISECOND] to `999`
  */
+@IgnorableReturnValue
 fun Calendar.setEndOfTheDay(): Calendar {
-    set(
-        Calendar.HOUR_OF_DAY,
-        23,
-    )
-    set(
-        Calendar.MINUTE,
-        59,
-    )
-    set(
-        Calendar.SECOND,
-        59,
-    )
-    set(
-        Calendar.MILLISECOND,
-        999,
-    )
+    set(Calendar.HOUR_OF_DAY, 23)
+    set(Calendar.MINUTE, 59)
+    set(Calendar.SECOND, 59)
+    set(Calendar.MILLISECOND, 999)
     return this
 }
 
@@ -128,23 +106,12 @@ fun Calendar.setEndOfTheDay(): Calendar {
  * Set [Calendar.HOUR_OF_DAY] to `12`; [Calendar.MINUTE],
  * [Calendar.SECOND] and [Calendar.MILLISECOND] to `0`
  */
+@IgnorableReturnValue
 fun Calendar.setNoon(): Calendar {
-    set(
-        Calendar.HOUR_OF_DAY,
-        12,
-    )
-    set(
-        Calendar.MINUTE,
-        0,
-    )
-    set(
-        Calendar.SECOND,
-        0,
-    )
-    set(
-        Calendar.MILLISECOND,
-        0,
-    )
+    set(Calendar.HOUR_OF_DAY, 12)
+    set(Calendar.MINUTE, 0)
+    set(Calendar.SECOND, 0)
+    set(Calendar.MILLISECOND, 0)
     return this
 }
 
@@ -153,11 +120,9 @@ fun Calendar.setNoon(): Calendar {
  *
  * @see setStartOfTheDay
  */
+@IgnorableReturnValue
 fun Calendar.setStartOfTheWeek(): Calendar {
-    set(
-        Calendar.DAY_OF_WEEK,
-        firstDayOfWeek,
-    )
+    set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
     setStartOfTheDay()
     return this
 }
@@ -167,15 +132,10 @@ fun Calendar.setStartOfTheWeek(): Calendar {
  *
  * @see setEndOfTheDay
  */
+@IgnorableReturnValue
 fun Calendar.setEndOfTheWeek(): Calendar {
-    set(
-        Calendar.DAY_OF_WEEK,
-        firstDayOfWeek,
-    )
-    add(
-        Calendar.DAY_OF_WEEK,
-        6,
-    )
+    set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
+    add(Calendar.DAY_OF_WEEK, 6)
     setEndOfTheDay()
     return this
 }
@@ -185,11 +145,9 @@ fun Calendar.setEndOfTheWeek(): Calendar {
  *
  * @see setStartOfTheDay
  */
+@IgnorableReturnValue
 fun Calendar.setStartOfTheMonth(): Calendar {
-    set(
-        Calendar.DAY_OF_MONTH,
-        getActualMinimum(Calendar.DAY_OF_MONTH),
-    )
+    set(Calendar.DAY_OF_MONTH, getActualMinimum(Calendar.DAY_OF_MONTH))
     setStartOfTheDay()
     return this
 }
@@ -199,11 +157,9 @@ fun Calendar.setStartOfTheMonth(): Calendar {
  *
  * @see setEndOfTheDay
  */
+@IgnorableReturnValue
 fun Calendar.setEndOfTheMonth(): Calendar {
-    set(
-        Calendar.DAY_OF_MONTH,
-        getActualMaximum(Calendar.DAY_OF_MONTH),
-    )
+    set(Calendar.DAY_OF_MONTH, getActualMaximum(Calendar.DAY_OF_MONTH))
     setEndOfTheDay()
     return this
 }
@@ -213,11 +169,9 @@ fun Calendar.setEndOfTheMonth(): Calendar {
  *
  * @see Calendar.YEAR
  */
+@IgnorableReturnValue
 fun Calendar.addYears(years: Int): Calendar {
-    add(
-        Calendar.YEAR,
-        years,
-    )
+    add(Calendar.YEAR, years)
     return this
 }
 
@@ -226,11 +180,9 @@ fun Calendar.addYears(years: Int): Calendar {
  *
  * @see Calendar.YEAR
  */
+@IgnorableReturnValue
 fun Calendar.removeYears(years: Int): Calendar {
-    add(
-        Calendar.YEAR,
-        -years,
-    )
+    add(Calendar.YEAR, -years)
     return this
 }
 
@@ -239,11 +191,9 @@ fun Calendar.removeYears(years: Int): Calendar {
  *
  * @see Calendar.MONTH
  */
+@IgnorableReturnValue
 fun Calendar.addMonths(months: Int): Calendar {
-    add(
-        Calendar.MONTH,
-        months,
-    )
+    add(Calendar.MONTH, months)
     return this
 }
 
@@ -252,11 +202,9 @@ fun Calendar.addMonths(months: Int): Calendar {
  *
  * @see Calendar.MONTH
  */
+@IgnorableReturnValue
 fun Calendar.removeMonths(months: Int): Calendar {
-    add(
-        Calendar.MONTH,
-        -months,
-    )
+    add(Calendar.MONTH, -months)
     return this
 }
 
@@ -265,11 +213,9 @@ fun Calendar.removeMonths(months: Int): Calendar {
  *
  * @see Calendar.DAY_OF_YEAR
  */
+@IgnorableReturnValue
 fun Calendar.addDays(days: Int): Calendar {
-    add(
-        Calendar.DAY_OF_YEAR,
-        days,
-    )
+    add(Calendar.DAY_OF_YEAR, days)
     return this
 }
 
@@ -278,11 +224,9 @@ fun Calendar.addDays(days: Int): Calendar {
  *
  * @see Calendar.DAY_OF_YEAR
  */
+@IgnorableReturnValue
 fun Calendar.removeDays(days: Int): Calendar {
-    add(
-        Calendar.DAY_OF_YEAR,
-        -days,
-    )
+    add(Calendar.DAY_OF_YEAR, -days)
     return this
 }
 
@@ -291,11 +235,9 @@ fun Calendar.removeDays(days: Int): Calendar {
  *
  * @see Calendar.HOUR_OF_DAY
  */
+@IgnorableReturnValue
 fun Calendar.addHours(hours: Int): Calendar {
-    add(
-        Calendar.HOUR_OF_DAY,
-        hours,
-    )
+    add(Calendar.HOUR_OF_DAY, hours)
     return this
 }
 
@@ -304,11 +246,9 @@ fun Calendar.addHours(hours: Int): Calendar {
  *
  * @see Calendar.HOUR_OF_DAY
  */
+@IgnorableReturnValue
 fun Calendar.removeHours(hours: Int): Calendar {
-    add(
-        Calendar.HOUR_OF_DAY,
-        -hours,
-    )
+    add(Calendar.HOUR_OF_DAY, -hours)
     return this
 }
 
@@ -317,11 +257,9 @@ fun Calendar.removeHours(hours: Int): Calendar {
  *
  * @see Calendar.MINUTE
  */
+@IgnorableReturnValue
 fun Calendar.addMinutes(minutes: Int): Calendar {
-    add(
-        Calendar.MINUTE,
-        minutes,
-    )
+    add(Calendar.MINUTE, minutes)
     return this
 }
 
@@ -330,11 +268,9 @@ fun Calendar.addMinutes(minutes: Int): Calendar {
  *
  * @see Calendar.MINUTE
  */
+@IgnorableReturnValue
 fun Calendar.removeMinutes(minutes: Int): Calendar {
-    add(
-        Calendar.MINUTE,
-        -minutes,
-    )
+    add(Calendar.MINUTE, -minutes)
     return this
 }
 
@@ -343,11 +279,9 @@ fun Calendar.removeMinutes(minutes: Int): Calendar {
  *
  * @see Calendar.SECOND
  */
+@IgnorableReturnValue
 fun Calendar.addSeconds(seconds: Int): Calendar {
-    add(
-        Calendar.SECOND,
-        seconds,
-    )
+    add(Calendar.SECOND, seconds)
     return this
 }
 
@@ -356,11 +290,9 @@ fun Calendar.addSeconds(seconds: Int): Calendar {
  *
  * @see Calendar.SECOND
  */
+@IgnorableReturnValue
 fun Calendar.removeSeconds(seconds: Int): Calendar {
-    add(
-        Calendar.SECOND,
-        -seconds,
-    )
+    add(Calendar.SECOND, -seconds)
     return this
 }
 
@@ -369,11 +301,9 @@ fun Calendar.removeSeconds(seconds: Int): Calendar {
  *
  * @see Calendar.MILLISECOND
  */
+@IgnorableReturnValue
 fun Calendar.addMilliseconds(milliseconds: Int): Calendar {
-    add(
-        Calendar.MILLISECOND,
-        milliseconds,
-    )
+    add(Calendar.MILLISECOND, milliseconds)
     return this
 }
 
@@ -382,11 +312,9 @@ fun Calendar.addMilliseconds(milliseconds: Int): Calendar {
  *
  * @see Calendar.MILLISECOND
  */
+@IgnorableReturnValue
 fun Calendar.removeMilliseconds(milliseconds: Int): Calendar {
-    add(
-        Calendar.MILLISECOND,
-        -milliseconds,
-    )
+    add(Calendar.MILLISECOND, -milliseconds)
     return this
 }
 
@@ -440,8 +368,7 @@ fun Calendar.yearsUntil(end: Calendar): Int =
  */
 fun Calendar.monthsUntil(end: Calendar): Int {
     val startPacked = (year.toLong() * 12L + month.toLong() - 1L) * 32L + dayOfMonth.toLong()
-    val endPacked =
-        (end.year.toLong() * 12L - end.month.toLong() - 1L) * 32L + end.dayOfMonth.toLong()
+    val endPacked = (end.year.toLong() * 12L - end.month.toLong() - 1L) * 32L + end.dayOfMonth.toLong()
     return ((endPacked - startPacked) / 32L).toInt()
 }
 
@@ -467,10 +394,7 @@ fun Calendar.copy(): Calendar =
  * Format [this] calendar date with specific [pattern]
  */
 fun Calendar.toString(pattern: String): String =
-    SimpleDateFormat(
-        pattern,
-        Locale.getDefault(),
-    ).format(Date(timeInMillis))
+    SimpleDateFormat(pattern, Locale.getDefault()).format(Date(timeInMillis))
 
 /**
  * Format [this] calendar date with specific [format]
@@ -508,10 +432,7 @@ val Calendar.isTomorrow: Boolean
         if (compareTo(calendar) <= 0) {
             return false
         }
-        calendar.add(
-            Calendar.DAY_OF_YEAR,
-            1,
-        )
+        calendar.addDays(1)
         return compareTo(calendar) < 0
     }
 
@@ -525,10 +446,7 @@ val Calendar.isToday: Boolean
         if (compareTo(calendar) <= 0) {
             return false
         }
-        calendar.add(
-            Calendar.DAY_OF_YEAR,
-            1,
-        )
+        calendar.addDays(1)
         return compareTo(calendar) < 0
     }
 
@@ -543,10 +461,7 @@ val Calendar.isYesterday: Boolean
         if (compareTo(calendar) <= 0) {
             return false
         }
-        calendar.add(
-            Calendar.DAY_OF_YEAR,
-            1,
-        )
+        calendar.addDays(1)
         return compareTo(calendar) < 0
     }
 
@@ -557,10 +472,9 @@ val Calendar.isYesterday: Boolean
  */
 var Calendar.year: Int
     get() = get(Calendar.YEAR)
-    set(value) = set(
-        Calendar.YEAR,
-        value,
-    )
+    set(value) {
+        set(Calendar.YEAR, value)
+    }
 
 /**
  * Week of year
@@ -569,10 +483,9 @@ var Calendar.year: Int
  */
 var Calendar.weekOfYear: Int
     get() = get(Calendar.WEEK_OF_YEAR)
-    set(value) = set(
-        Calendar.WEEK_OF_YEAR,
-        value,
-    )
+    set(value) {
+        set(Calendar.WEEK_OF_YEAR, value)
+    }
 
 /**
  * Month
@@ -581,10 +494,9 @@ var Calendar.weekOfYear: Int
  */
 var Calendar.month: Int
     get() = get(Calendar.MONTH)
-    set(value) = set(
-        Calendar.MONTH,
-        value,
-    )
+    set(value) {
+        set(Calendar.MONTH, value)
+    }
 
 /**
  * Week of month
@@ -593,13 +505,12 @@ var Calendar.month: Int
  */
 var Calendar.weekOfMonth: Int
     get() = get(Calendar.WEEK_OF_MONTH)
-    set(value) = set(
-        Calendar.WEEK_OF_MONTH,
-        value,
-    )
+    set(value) {
+        set(Calendar.WEEK_OF_MONTH, value)
+    }
 
 /**
- * Day of era (incrementing count of days where day 0 is 0000-01-01)
+ * Day of era (incrementing count of days, where day 0 is 0000-01-01)
  */
 val Calendar.dayOfEra: Int
     get() {
@@ -624,7 +535,7 @@ val Calendar.dayOfEra: Int
     }
 
 /**
- * Day of epoch (incrementing count of days where day 0 is 1970-01-01)
+ * Day of epoch (incrementing count of days, where day 0 is 1970-01-01)
  *
  * // java.time.LocalDate.toEpochDay
  */
@@ -638,10 +549,9 @@ val Calendar.dayOfEpoch: Int
  */
 var Calendar.dayOfYear: Int
     get() = get(Calendar.DAY_OF_YEAR)
-    set(value) = set(
-        Calendar.DAY_OF_YEAR,
-        value,
-    )
+    set(value) {
+        set(Calendar.DAY_OF_YEAR, value)
+    }
 
 /**
  * Day of month
@@ -650,10 +560,9 @@ var Calendar.dayOfYear: Int
  */
 var Calendar.dayOfMonth: Int
     get() = get(Calendar.DAY_OF_MONTH)
-    set(value) = set(
-        Calendar.DAY_OF_MONTH,
-        value,
-    )
+    set(value) {
+        set(Calendar.DAY_OF_MONTH, value)
+    }
 
 /**
  * Day of week
@@ -662,10 +571,9 @@ var Calendar.dayOfMonth: Int
  */
 var Calendar.dayOfWeek: Int
     get() = get(Calendar.DAY_OF_WEEK)
-    set(value) = set(
-        Calendar.DAY_OF_WEEK,
-        value,
-    )
+    set(value) {
+        set(Calendar.DAY_OF_WEEK, value)
+    }
 
 /**
  * Day of week in month
@@ -674,10 +582,9 @@ var Calendar.dayOfWeek: Int
  */
 var Calendar.dayOfWeekInMonth: Int
     get() = get(Calendar.DAY_OF_WEEK_IN_MONTH)
-    set(value) = set(
-        Calendar.DAY_OF_WEEK_IN_MONTH,
-        value,
-    )
+    set(value) {
+        set(Calendar.DAY_OF_WEEK_IN_MONTH, value)
+    }
 
 /**
  * Hour of day (24 hours)
@@ -686,10 +593,9 @@ var Calendar.dayOfWeekInMonth: Int
  */
 var Calendar.hourOfDay: Int
     get() = get(Calendar.HOUR_OF_DAY)
-    set(value) = set(
-        Calendar.HOUR_OF_DAY,
-        value,
-    )
+    set(value) {
+        set(Calendar.HOUR_OF_DAY, value)
+    }
 
 /**
  * Hour of period of day (12 hours)
@@ -698,10 +604,9 @@ var Calendar.hourOfDay: Int
  */
 var Calendar.hour: Int
     get() = get(Calendar.HOUR)
-    set(value) = set(
-        Calendar.HOUR,
-        value,
-    )
+    set(value) {
+        set(Calendar.HOUR, value)
+    }
 
 /**
  * Whether the [hour] is before or after noon
@@ -712,10 +617,9 @@ var Calendar.hour: Int
  */
 var Calendar.amPm: Int
     get() = get(Calendar.AM_PM)
-    set(value) = set(
-        Calendar.AM_PM,
-        value,
-    )
+    set(value) {
+        set(Calendar.AM_PM, value)
+    }
 
 /**
  * Minute
@@ -724,10 +628,9 @@ var Calendar.amPm: Int
  */
 var Calendar.minute: Int
     get() = get(Calendar.MINUTE)
-    set(value) = set(
-        Calendar.MINUTE,
-        value,
-    )
+    set(value) {
+        set(Calendar.MINUTE, value)
+    }
 
 /**
  * Second
@@ -736,10 +639,9 @@ var Calendar.minute: Int
  */
 var Calendar.second: Int
     get() = get(Calendar.SECOND)
-    set(value) = set(
-        Calendar.SECOND,
-        value,
-    )
+    set(value) {
+        set(Calendar.SECOND, value)
+    }
 
 /**
  * Millisecond
@@ -748,7 +650,6 @@ var Calendar.second: Int
  */
 var Calendar.millisecond: Int
     get() = get(Calendar.MILLISECOND)
-    set(value) = set(
-        Calendar.MILLISECOND,
-        value,
-    )
+    set(value) {
+        set(Calendar.MILLISECOND, value)
+    }

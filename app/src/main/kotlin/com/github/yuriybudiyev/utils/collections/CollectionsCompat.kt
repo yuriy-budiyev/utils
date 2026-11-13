@@ -24,9 +24,9 @@
 
 package com.github.yuriybudiyev.utils.collections
 
-import android.os.Build
 import java.util.WeakHashMap
 import kotlin.math.ceil
+import android.os.Build
 
 object CollectionsCompat {
 

@@ -24,10 +24,10 @@
 
 package com.github.yuriybudiyev.utils.common
 
+import kotlin.reflect.KClass
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
-import kotlin.reflect.KClass
 
 fun Context.toggleComponent(
     componentClass: KClass<*>,

@@ -24,6 +24,7 @@
 
 package com.github.yuriybudiyev.diff_util.colors
 
+import kotlin.math.roundToInt
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
@@ -31,7 +32,6 @@ import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
-import kotlin.math.roundToInt
 
 fun Context.getColors(): Colors =
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {

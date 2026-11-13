@@ -24,9 +24,9 @@
 
 package com.github.yuriybudiyev.diff_util
 
+import kotlin.math.roundToInt
 import android.content.Context
 import android.util.TypedValue
-import kotlin.math.roundToInt
 
 context(context: Context)
 inline val Number.dp: Int // Inline to bypass auto box/unbox

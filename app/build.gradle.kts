@@ -52,6 +52,11 @@ android {
 kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
+        freeCompilerArgs.apply {
+            add("-Xreturn-value-checker=full")
+            add("-Xname-based-destructuring=complete")
+            add("-Xcompanion-blocks-and-extensions") // Experimental in 2.5.0
+        }
     }
 }
 

@@ -24,14 +24,14 @@
 
 package com.github.yuriybudiyev.utils.multithreading.executor
 
-import android.os.Process
-import kotlinx.coroutines.CoroutineDispatcher
 import java.util.concurrent.CancellationException
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
 import java.util.concurrent.ScheduledThreadPoolExecutor
 import java.util.concurrent.ThreadFactory
 import java.util.concurrent.atomic.AtomicLong
+import kotlinx.coroutines.CoroutineDispatcher
+import android.os.Process
 
 /**
  * Scheduled thread pool executor with [Process.THREAD_PRIORITY_BACKGROUND]
